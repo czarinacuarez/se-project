@@ -23,10 +23,26 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/school_program', function () {
+        return view('cruds.school_program');
+    })->name('school_program');
+
+    Route::get('/participants', function () {
+        return view('cruds.participants');
+    })->name('participants');
+
+    Route::get('/players', function () {
+        return view('cruds.players');
+    })->name('players');
+
     Route::get('/sports_match', function () {
         return view('cruds.sports_match');
-    });
+    })->name('sports_match');
     
+    Route::get('/dance_match', function () {
+        return view('cruds.dance_match');
+    })->name('dance_match');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

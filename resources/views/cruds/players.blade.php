@@ -8,7 +8,7 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="flex-1 flex items-center space-x-2">
                             <h5>
-                                <span class="text-gray-500">Sport Match</span>
+                                <span class="text-gray-500">Players</span>
                             </h5>
                             <button type="button" class="group" data-tooltip-target="results-tooltip">
                                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" viewbox="0 0 20 20" fill="currentColor">
@@ -367,7 +367,7 @@
                                     <th scope="col" class="p-4">Last Update</th>
                                 </tr>
                             </thead>
-                            @include('crud_components.sports_match_table')
+                            @include('crud_components.players_table')
                         </table>
                     </div>
                 </div>
