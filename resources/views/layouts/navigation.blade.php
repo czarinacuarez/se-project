@@ -1,5 +1,5 @@
 <div class="sm:ml-64">
-    <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+    <nav x-data="{ open: false }" class="bg-blue-800 border-b border-gray-100">
         <!-- Primary Navigation Menu -->
         <div class="sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">

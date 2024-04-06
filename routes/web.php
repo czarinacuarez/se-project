@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/school_program', function () {
-        return view('cruds.school_program');
-    })->name('school_program');
+    Route::get('/school_program', [SchoolController::class, 'index'])->name('school_program');
 
     Route::get('/participants', function () {
         return view('cruds.participants');
@@ -46,6 +45,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// crud route
+Route::middleware('auth')->group(function () {
+    Route::post('add_school', [SchoolController::class, 'AddSchool']);
 });
 
 require __DIR__.'/auth.php';
