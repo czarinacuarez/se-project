@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SportsController;
+use App\Http\Controllers\PlayersController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,13 +37,12 @@ Route::middleware('auth')->group(function () {
     // Sports Controller
     Route::get('/sports_match', [SportsController::class, 'index'])->name('sports_match');
 
+    // Players Controller
+    Route::get('/players', [PlayersController::class, 'index'])->name('players');
+
     Route::get('/participants', function () {
         return view('cruds.participants');
     })->name('participants');
-
-    Route::get('/players', function () {
-        return view('cruds.players');
-    })->name('players');
     
     Route::get('/dance_match', function () {
         return view('cruds.dance_match');
@@ -62,6 +63,9 @@ Route::middleware('auth')->group(function () {
 
     // Sports Controller
     Route::post('add_sports', [SportsController::class, 'AddSports']);
+
+    // Player Controller
+    Route::post('add_players', [PlayersController::class, 'AddPlayer']);
 });
 
 require __DIR__.'/auth.php';
