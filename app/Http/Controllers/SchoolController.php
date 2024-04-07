@@ -17,7 +17,6 @@ class SchoolController extends Controller
         $request->validate([
             'school_initials' => ['required', 'string', 'max:255'],
             'school_name' => ['required', 'string', 'max:255'],
-            'points' => ['required', 'int'],
             'school_logo' => ['required'],
         ]);
 
@@ -31,7 +30,6 @@ class SchoolController extends Controller
             $school_list = School::create([
                 'school_initials' => $request->school_initials,
                 'school_name' => $request->school_name,
-                'points' => $request->points,
                 'school_logo' => $schoolImage,
             ]);
 

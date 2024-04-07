@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SportsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::middleware('auth')->group(function () {
     // Program Controller
     Route::get('/program', [ProgramController::class, 'index'])->name('programs');
 
+    // Sports Controller
+    Route::get('/sports_match', [SportsController::class, 'index'])->name('sports_match');
+
     Route::get('/participants', function () {
         return view('cruds.participants');
     })->name('participants');
@@ -38,10 +42,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/players', function () {
         return view('cruds.players');
     })->name('players');
-
-    Route::get('/sports_match', function () {
-        return view('cruds.sports_match');
-    })->name('sports_match');
     
     Route::get('/dance_match', function () {
         return view('cruds.dance_match');
@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
     
     // Program Controller
     Route::post('add_program', [ProgramController::class, 'AddProgram']);
+
+    // Sports Controller
+    Route::post('add_sports', [SportsController::class, 'AddSports']);
 });
 
 require __DIR__.'/auth.php';

@@ -20,13 +20,11 @@ class ProgramController extends Controller
             $request->validate([
                 'program_initials' => ['required', 'string', 'max:255'],
                 'program_name' => ['required', 'string', 'max:255'],
-                'points' => ['required', 'int'],
             ]);
     
             $program_list = Program::create([
                 'program_initials' => $request->program_initials,
                 'program_name' => $request->program_name,
-                'points' => $request->points,
                 'school_id' => $request->school_id,
             ]);
             
