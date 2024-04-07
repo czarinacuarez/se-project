@@ -8,6 +8,9 @@
                 </div>
             </th> --}}
             <td class="px-4 py-3">
+                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->school->school_name }}</span>
+            </td>
+            <td class="px-4 py-3">
                 <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->program_initials }}</span>
             </td>
             <td class="px-4 py-3">
