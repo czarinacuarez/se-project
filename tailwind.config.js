@@ -11,6 +11,10 @@ export default {
 
     theme: {
         extend: {
+            spacing: {
+                'large' : '40rem',
+        
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
