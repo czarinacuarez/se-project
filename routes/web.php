@@ -5,9 +5,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SportsController;
 use App\Http\Controllers\PlayersController;
-
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PlayersController;
 
 /*
 |--------------------------------------------------------------------------
