@@ -69,7 +69,7 @@
     </div>
 
 
-        <div class = "bg-cover p-20" style="background-image: url('{{ asset('images/homepage-bg.png') }}');">
+        <div class = "bg-cover p-20" style="background-image: url('{{ asset('images/greenbackground.png') }}');">
             <div class = " max-w-4xl mx-auto shadow-lg p-5 bg-white rounded-lg">
                 <h1>HI</h1>
             </div>

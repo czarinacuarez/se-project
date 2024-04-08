@@ -49,7 +49,11 @@
                     " aria-current="page">Home</a>
                 </li>
                 <li>
-                  <a href="#" class="block py-2 px-3 text-gray-900 rounded  hover:text-black md:hover:text-yellow-300  hover:bg-yellow-400 md:hover:bg-transparent md:hover:text-white md:p-0 md:text-white     ">Event Overview</a>
+                  <a href="{{  route('about')  }}" class="block py-2 px-3 text-gray-900 rounded  hover:text-black md:hover:text-yellow-300  hover:bg-yellow-400 md:hover:bg-transparent md:hover:text-white md:p-0
+                  @if (Route::is('about'))
+                  md:text-yellow-300
+                    @endif  md:text-white 
+                     ">Event Overview</a>
                 </li>
              
                 <li>
@@ -60,15 +64,20 @@
                     <div id="dropdownNavbar" class="z-10 hidden font-normal bg-blue-800 divide-y divide-gray-100 rounded-lg shadow w-44  ">
                         <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
                           <li>
-                            <a href="#" class="block px-4 py-2 text-white hover:bg-yellow-400 hover:text-black ">Dashboard</a>
+                            <a href="{{  route('sports')  }}" class="block px-4 py-2 text-white hover:bg-yellow-400 hover:text-black ">Sports</a>
                           </li>
-                       
                           <li>
-                            <a href="#" class="block px-4 py-2  text-white hover:bg-yellow-400 hover:text-black ">Earnings</a>
+                            <a href="{{  route('contest')  }}" class="block px-4 py-2 text-white hover:bg-yellow-400 hover:text-black ">Contest</a>
+                          </li>
+                          <li>
+                            <a href="{{  route('gallery')  }}" class="block px-4 py-2  text-white hover:bg-yellow-400 hover:text-black ">Participants Gallery</a>
+                          </li>
+                          <li>
+                            <a href="{{  route('msnu')  }}" class="block px-4 py-2  text-white hover:bg-yellow-400 hover:text-black ">Mr. and Ms. NU</a>
                           </li>
                         </ul>
                         <div class="py-1">
-                          <a href="#" class="block px-4 py-2 text-sm text-white text-gray-700 hover:bg-yellow-400 md:hover:bg-transparent hover:bg-yellow-400 hover:text-black  ">Sign out</a>
+                          <a href="{{  route('result')  }}" class="block px-4 py-2 text-sm text-white text-gray-700 hover:bg-yellow-400 md:hover:bg-yellow-400 hover:bg-yellow-400 hover:text-black  ">Results</a>
                         </div>
                 </li>
                
@@ -84,6 +93,18 @@
         <div class = "mt-28 max-w-3xl m-auto py-40 px-5 background">
           {{ $slot }}
          </div>
+         @elseif (Route::is('about'))
+         <div class="relative mt-18  sm:justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-white dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
+          {{ $slot }}
+        </div>
+        @elseif   (Route::is('result'))
+        <div class="relative mt-16 :justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-blue-800 dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
+          {{ $slot }}
+        </div>
+        @else
+        <div class="relative mt-16 :justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-white dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
+          {{ $slot }}
+        </div>
     @endif
     
 
