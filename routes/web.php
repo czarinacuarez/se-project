@@ -60,15 +60,13 @@ Route::middleware('auth')->group(function () {
     // Sports Controller
     Route::get('/sports_match', [SportsController::class, 'index'])->name('sports_match');
 
-        // Players Controller
-        Route::get('/players', [PlayersController::class, 'index'])->name('players');
+    // Players Controller
+    Route::get('/players', [PlayersController::class, 'index'])->name('players');
 
     Route::get('/participants', function () {
         return view('cruds.participants');
     })->name('participants');
 
-
-    
     Route::get('/dance_match', function () {
         return view('cruds.dance_match');
     })->name('dance_match');
@@ -82,15 +80,17 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     // School Controller
     Route::post('add_school', [SchoolController::class, 'AddSchool']);
-    
+    Route::put('update_school/{id}', [SchoolController::class, 'UpdateSchool']);
+    Route::delete('delete_school/{id}', [SchoolController::class, 'DeleteSchool']);
+
     // Program Controller
     Route::post('add_program', [ProgramController::class, 'AddProgram']);
 
     // Sports Controller
     Route::post('add_sports', [SportsController::class, 'AddSports']);
 
-      // Player Controller
-      Route::post('add_players', [PlayersController::class, 'AddPlayer']);
+    // Player Controller
+    Route::post('add_players', [PlayersController::class, 'AddPlayer']);
 });
 
 require __DIR__.'/auth.php';
