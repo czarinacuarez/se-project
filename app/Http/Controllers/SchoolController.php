@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\School;
+use Illuminate\Support\Facades\Storage;
 
 class SchoolController extends Controller
 {
@@ -37,5 +38,39 @@ class SchoolController extends Controller
 
             return back();
         }
+    }
+
+    public function UpdateSchool(Request $request, $id) {
+        $school = School::find($id);
+
+        if($school) {
+            $school->school_initials = $request->input('school_initials');
+            $school->school_name = $request->input('school_name');
+            $schoolLL = $request->file('school_logo');
+            
+            if ($request->hasFile('school_logo')) {
+                Storage::delete('public/images/' . $school->school_logo);
+
+                $uploadedLogo = $request->file('school_logo');
+                
+                $schoolImage = time() . '.' . $uploadedLogo->getClientOriginalExtension();
+                $directory = 'images';
+                $uploadedLogo->storeAs('public/' . $directory, $schoolImage);
+
+                $school->school_logo = $schoolImage;
+            }
+
+            $school->update();
+            return redirect()->back()->with('status','Updated Successfully');
+        } else {
+            return redirect()->back()->with('error', 'School not found');
+        }
+    }
+
+    public function DeleteSchool(Request $request, $id) {
+        $school = School::find($id);
+
+        $school->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
     }
 }
