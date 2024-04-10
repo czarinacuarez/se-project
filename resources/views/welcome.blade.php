@@ -17,12 +17,12 @@
 
                 <br><br>
                 This year, the NU Fairview Student Executives, in collaboration with the Student Development and
-                Activities Office, are prepared to elevate the stature of U-Week 2024 under the theme ‘maNUfesting:
-                Fated Victors.’
+                Activities Office, are prepared to elevate the stature of U-Week 2024 under the theme <b> ‘maNUfesting:
+                Fated Victors.’ <b>
 
             </p>
             <div class="lg:py-8 py-4 mx-auto text-center md:text-left">
-                <a href=""
+                <a href="{{  route('about')  }}"
                     class="bg-yellow-400 hover:bg-blue-800 text-blue-800 hover:text-white  text-lg text-2xl font-bold py-2 px-6 lg:py-4 lg:px-8 rounded-full">
                     Read More
                 </a>

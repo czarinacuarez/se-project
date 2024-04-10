@@ -1,14 +1,12 @@
 <x-guest-layout>
     <div class = "">
-        <img class = "max-h-96 w-full bg-cover" src = "images/aboutcover.png">
+        <img class = "max-h-96 w-full bg-cover" src = "images/contestbg.png">
     </div>
 
     <div class = "p-5 max-w-7xl mx-auto">
         <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">CONTESTS
         </h1>
-        <p class = " text-base lg:text-lg lg:text-center text-center lg:pe-10  py-2">University Week stands out as
-            the highly anticipated annual event, serving as a platform to exhibit diverse talents and skills of both
-            students and faculty members through various sports and activities.
+        <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">This section consists of related information about this U-Week's Contest.
         </p>
         
     </div>
@@ -64,6 +62,8 @@
         
         <div id="bands" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">BATTLE OF THE BANDS</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -121,6 +121,8 @@
 
         <div id="pet" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PET FASHION SHOW</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -178,6 +180,8 @@
 
         <div id="brains" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">BATTLE OF THE BRAINS</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -235,6 +239,8 @@
 
         <div id="dance" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">DANCE CONTEST</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -292,6 +298,8 @@
         
         <div id="poster" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">POSTER MAKING</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -349,6 +357,8 @@
 
         <div id="peerlympics" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PEERLYMPICS</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -406,6 +416,8 @@
 
         <div id="shelfie" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">SHELFIE</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -463,6 +475,8 @@
         
         <div id="debate" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">DEBATE</h1>
+            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
+            </p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

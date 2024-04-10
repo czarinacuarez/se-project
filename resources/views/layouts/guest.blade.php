@@ -98,7 +98,7 @@
           {{ $slot }}
         </div>
         @elseif   (Route::is('result'))
-        <div class="relative mt-16 :justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-blue-800 dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
+        <div class="relative mt-16 :justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-white dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
           {{ $slot }}
         </div>
         @else

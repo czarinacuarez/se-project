@@ -5,10 +5,59 @@
     <div class = "p-5 max-w-7xl mx-auto">
         <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">MR AND MS NU
         </h1>
+
+        <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
+            <section
+                class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start ">
+                <a class="pb-3 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                    <img class = "" src="images/samplepic.jpg" alt="">
+                   
+                    <h1 class="text-xl font-bold mt-2">Karl Isaac Francisco</h1>
+                    <p class="mb-2">Bachelor of Science in Information Technology</p>
+                </a>
+
+                <a class="pb-3 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                    <img class = "" src="images/samplepic.jpg" alt="">
+                   
+                    <h1 class="text-xl font-bold mt-2">Karl Isaac Francisco</h1>
+                    <p class="mb-2">Bachelor of Science in Information Technology</p>
+                </a>
+
+                <a class="pb-3 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                    <img class = "" src="images/samplepic.jpg" alt="">
+                   
+                    <h1 class="text-xl font-bold mt-2">Karl Isaac Francisco</h1>
+                    <p class="mb-2">Bachelor of Science in Information Technology</p>
+                </a>
+
+                <a class="pb-3 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                    <img class = "" src="images/samplepic.jpg" alt="">
+                   
+                    <h1 class="text-xl font-bold mt-2">Karl Isaac Francisco</h1>
+                    <p class="mb-2">Bachelor of Science in Information Technology</p>
+                </a>
+
+                <a class="pb-3 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                    <img class = "" src="images/samplepic.jpg" alt="">
+                   
+                    <h1 class="text-xl font-bold mt-2">Karl Isaac Francisco</h1>
+                    <p class="mb-2">Bachelor of Science in Information Technology</p>
+                </a>
+
+                <a class="pb-3 bg-purple-50 text-center transform duration-500 hover:-translate-y-2 cursor-pointer">
+                    <img class = "" src="images/samplepic.jpg" alt="">
+                   
+                    <h1 class="text-xl font-bold mt-2">Karl Isaac Francisco</h1>
+                    <p class="mb-2">Bachelor of Science in Information Technology</p>
+                </a>
+        
+            </section>
+        </section>
     </div>
-    <div class = "bg-blue-800 p-5 ">
+
+    <div class = "bg-yellow-400 p-5 ">
         <div class = "p-5 max-w-7xl mx-auto">
-            <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-white font-extrabold ">RESULTS
+            <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">RESULTS
             </h1>
         </div>
         <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
