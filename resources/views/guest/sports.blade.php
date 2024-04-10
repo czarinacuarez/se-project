@@ -725,12 +725,58 @@
         </div>
         
     </div>
-    <div class = "bg-yellow-300">
+    <div class = "bg-white p-5">
         <div class = "p-5 max-w-7xl mx-auto ">
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">UPCOMING SPORTS
                 MATCHES
             </h1>
+        </div>
 
+        
+        <div class = "md:max-w-xl max-w-md mx-auto rounded-xl  my-6  grid grid-cols-4">
+            <div class = " col-span-2 bg-blue-800  flex rounded-l-xl items-center justify-center ">
+                <div class = "w-20 h-20 md:w-40 md:h-28">
+                    <img class = "w-full h-full" src = "images/SBAlogo.png">
+                </div>
+                <h1 class = "text-center text-sm text-white">March 20, 2023 </h1>
+                <div class = "w-20 h-20 md:w-40 md:h-28"> 
+                    <img class = "w-full h-full" src = "images/SBAlogo.png">
+                </div>                
+            </div>
+            <div class = " col-span-2 bg-white   border border-4 p-4 border-blue-800 rounded-r-xl flex items-center justify-center flex-col">
+                <h1 class="text-blue-800 font-bold text-lg text-center">BATTLE OF THE BANDS</h1>
+                <p class="text-blue-800 italic text-sm">March 08, 2023</p>
+
+                <div class = "justify-center items-center flex"> 
+                    <div class = "py-3 flex gap-1 text-blue-800 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                          </svg>
+                          
+                        <p class="text-blue-800 font-bold text-sm">National University Fairview</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+
+        <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3  my-6 bg-blue-800 grid grid-cols-3">
+            <div class = "col-span-1 flex items-center justify-center ">
+                <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
+            </div>
+            <div class = "col-span-2 flex  items-center justify-center flex-col">
+                <h1 class="text-white font-bold text-lg">BATTLE OF THE BANDS</h1>
+                <p class="text-white italic text-sm">March 08, 2023</p>
+
+                <div class = "py-3 flex gap-1 text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                      </svg>
+                      
+                    <p class="text-white font-bold text-base">National University Fairview</p>
+                </div>
+            </div>
         </div>
     </div>
 
