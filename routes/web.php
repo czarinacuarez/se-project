@@ -7,6 +7,7 @@ use App\Http\Controllers\SportsController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\ParticipantsController;
+use App\Http\Controllers\MrAndMsNUController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +73,9 @@ Route::middleware('auth')->group(function () {
     // Contest Controller
     Route::get('/contest_match', [ContestController::class, 'index'])->name('contest_match');
 
+    // Mr and Ms NU Controller
+    Route::get('/Mr&MsNU', [MrAndMsNUController::class, 'index'])->name('mr_and_ms');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -108,6 +112,11 @@ Route::middleware('auth')->group(function () {
     Route::post('add_participants', [ParticipantsController::class, 'AddParticipants']);
     Route::put('update_participants/{id}', [ParticipantsController::class, 'UpdateParticipants']);
     Route::delete('delete_participants/{id}', [ParticipantsController::class, 'DeleteParticipants']); 
+
+    // MrAndMsNU Controller
+    Route::post('add_contestants', [MrAndMsNUController::class, 'AddContestant']);
+    Route::put('update_contestant/{id}', [MrAndMsNUController::class, 'UpdateContestant']);
+    Route::delete('delete_contestant/{id}', [MrAndMsNUController::class, 'DeleteContestant']); 
 });
 
 require __DIR__.'/auth.php';

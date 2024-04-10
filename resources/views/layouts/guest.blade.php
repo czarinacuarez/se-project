@@ -18,7 +18,7 @@
     </head>
   
     <body class = "antialiased">
-        <nav class="bg-blue-800  fixed w-full z-20 top-0 start-0  ">
+        <nav class="bg-blue-800  fixed w-full z-20 top-0 start-0">
             <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="images/u-week-navbar.svg" class="md:h-10 h-8 w-full" alt="">
@@ -107,6 +107,7 @@
         </div>
     @endif
     
+    @include('footer.main_footer')
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     </body>
