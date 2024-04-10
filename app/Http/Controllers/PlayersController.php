@@ -37,4 +37,19 @@ class PlayersController extends Controller
 
         return back();
     }
+
+    public function UpdatePlayer(Request $request, $id) {
+        $player = Players::find($id);
+        $player->name = $request->input('name');
+        $player->section = $request->input('section');
+
+        $player->update();
+        return redirect()->back()->with('status','Updated Successfully');
+    }
+    public function DeletePlayer(Request $request, $id) {
+        $player = Players::find($id);
+        
+        $player->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
+    }
 }

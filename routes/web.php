@@ -5,6 +5,8 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SportsController;
 use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\ContestController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,9 +69,8 @@ Route::middleware('auth')->group(function () {
         return view('cruds.participants');
     })->name('participants');
 
-    Route::get('/dance_match', function () {
-        return view('cruds.dance_match');
-    })->name('dance_match');
+    // Contest Controller
+    Route::get('/contest_match', [ContestController::class, 'index'])->name('contest_match');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -85,12 +86,22 @@ Route::middleware('auth')->group(function () {
 
     // Program Controller
     Route::post('add_program', [ProgramController::class, 'AddProgram']);
+    Route::put('update_program/{id}', [ProgramController::class, 'UpdateProgram']);
+    Route::delete('delete_program/{id}', [ProgramController::class, 'DeleteProgram']);
 
     // Sports Controller
     Route::post('add_sports', [SportsController::class, 'AddSports']);
+    Route::put('update_sport_category/{id}', [SportsController::class, 'UpdateSportsCategory']);
+    Route::delete('delete_sport_category/{id}', [SportsController::class, 'DeleteSportsCategory']);
 
     // Player Controller
     Route::post('add_players', [PlayersController::class, 'AddPlayer']);
+    Route::put('update_player/{id}', [PlayersController::class, 'UpdatePlayer']);
+    Route::delete('delete_player/{id}', [PlayersController::class, 'DeletePlayer']); 
+
+    // Contest Controller
+    Route::post('add_contest', [ContestController::class, 'AddContest']);
+    Route::put('update_contest_category/{id}', [ContestController::class, 'UpdateContestCategory']);
 });
 
 require __DIR__.'/auth.php';

@@ -1,21 +1,12 @@
 <tbody>
-    @forelse ($player_lists as $lists)
+    @forelse ($contest_lists as $lists)
         <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-            <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->school_id}}</span>
-            </td>
-            <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->sports_id}}</span>
-            </td>
-            <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->program_id}}</span>
-            </td>
-            <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->name}}</span>
-            </td>
-            <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->section}}</span>
-            </td>
+            <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <div class="flex items-center mr-3">
+                    {{-- <img src="" alt="school" class="h-8 w-8 mr-3"> --}}
+                    <span>{{ $lists->contest_category }}</span>
+                </div>
+            </th>
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div class="flex items-center space-x-4">
                     <button type="button" data-drawer-target="drawer-update-product-{{ $lists->id }}" data-drawer-show="drawer-update-product-{{ $lists->id }}" aria-controls="drawer-update-product-{{ $lists->id }}" class="bg-blue-400 py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
@@ -33,7 +24,7 @@
                     </button>
                 </div>
             </td>
-        </tr>
+        </tr> 
     @empty
 
     @endforelse

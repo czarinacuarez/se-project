@@ -31,4 +31,19 @@ class SportsController extends Controller
             dd($e->getMessage());
         }
     }
+
+    public function UpdateSportsCategory (Request $request, $id) {
+        $sport = Sports::find($id);
+        $sport->sports_category = $request->input('sports_category');
+
+        $sport->update();
+        return redirect()->back()->with('status','Updated Successfully');
+    }
+
+    public function DeleteSportsCategory(Request $request, $id) {
+        $sport = Sports::find($id);
+
+        $sport->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
+    }
 }

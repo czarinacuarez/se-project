@@ -35,4 +35,20 @@ class ProgramController extends Controller
             dd($e->getMessage());
         }
     }
+
+    public function UpdateProgram (Request $request, $id) {
+        $program = Program::find($id);
+        $program->program_initials = $request->input('program_initials');
+        $program->program_name = $request->input('program_name');
+
+        $program->update();
+        return redirect()->back()->with('status','Updated Successfully');
+    }
+
+    public function DeleteProgram(Request $request, $id) {
+        $program = Program::find($id);
+
+        $program->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
+    }
 }
