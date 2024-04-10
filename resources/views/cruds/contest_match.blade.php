@@ -480,7 +480,7 @@
         </div>
     </div>
     <!-- Delete Modal -->
-    {{-- @forelse($sport_lists as $lists)
+    @forelse($contest_lists as $lists)
         <div id="delete-modal-{{ $lists->id }}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full h-auto max-w-md max-h-full">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -495,7 +495,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
-                        <form method="POST" action="{{ url('delete_sport_category', ['id' => $lists->id]) }}">
+                        <form method="POST" action="{{ url('delete_contest', ['id' => $lists->id]) }}">
                             @csrf
                             @method('DELETE')
                             <button data-modal-toggle="delete-modal-{{ $lists->id }}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">Yes, I'm sure</button>
@@ -507,5 +507,5 @@
         </div>
     @empty
 
-    @endforelse --}}
+    @endforelse
 </x-admin-layout>

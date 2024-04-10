@@ -37,4 +37,11 @@ class ContestController extends Controller
         $contest->update();
         return redirect()->back()->with('status','Updated Successfully');
     }
+
+    public function DeleteContest(Request $request, $id) {
+        $contest = Contest::find($id);
+
+        $contest->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
+    }
 }
