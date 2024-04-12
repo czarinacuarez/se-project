@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SportsController;
+use App\Http\Controllers\SportsMatchController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\ParticipantsController;
@@ -97,6 +98,11 @@ Route::middleware('auth')->group(function () {
     Route::post('add_sports', [SportsController::class, 'AddSports']);
     Route::put('update_sport_category/{id}', [SportsController::class, 'UpdateSportsCategory']);
     Route::delete('delete_sport_category/{id}', [SportsController::class, 'DeleteSportsCategory']);
+
+    // Sports Match Controller
+    Route::post('add_sports_match', [SportsMatchController::class, 'AddSportsMatch']);
+    Route::put('update_sport_match/{id}', [SportsMatchController::class, 'UpdateSportsMatch']);
+    Route::delete('delete_sport_match/{id}', [SportsMatchController::class, 'DeleteSportsMatch']);
 
     // Player Controller
     Route::post('add_players', [PlayersController::class, 'AddPlayer']);

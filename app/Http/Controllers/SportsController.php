@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Sports;
+use App\Models\SportsMatch;
 
 use Illuminate\Http\Request;
 
@@ -9,8 +10,9 @@ class SportsController extends Controller
 {
     public function index() {
         $sport_lists = Sports::all();
+        $sport_match_lists = SportsMatch::all();
 
-        return view ('cruds.sports_match', ['sport_lists' => $sport_lists]);
+        return view ('cruds.sports_match', ['sport_lists' => $sport_lists, 'sport_match_lists' => $sport_match_lists]);
     }
 
     public function AddSports(Request $request) {
