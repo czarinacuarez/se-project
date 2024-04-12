@@ -23,19 +23,28 @@ class ParticipantsController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'section' => ['required', 'string', 'max:255'],
+            'profile' => ['required'],
         ]);
 
-        $participants_lists = Participants::Create([
-            'school_id' => $request->school_id,
-            'contest_id' => $request->contest_id,
-            'program_id' => $request->program_id,
-            'name' => $request->name,
-            'section' => $request->section,
-        ]);
+        if ($request->hasFile('profile')) {
+            $uploadedLogo = $request->file('profile');
+            $profileImage = time() . '.' . $uploadedLogo->getClientOriginalExtension();
 
-        $participants_lists->save();
+            $directory = 'profiles';
+            $uploadedLogo->storeAs('public/' . $directory, $profileImage);
 
-        return back();
+            $participants_lists = Participants::Create([
+                'contest_id' => $request->contest_id,
+                'program_id' => $request->program_id,
+                'name' => $request->name,
+                'profile' => $profileImage,
+                'section' => $request->section,
+            ]);
+
+            $participants_lists->save();
+
+            return back();
+        }
     }
     public function UpdateParticipants(Request $request, $id) {
         $participants = Participants::find($id);

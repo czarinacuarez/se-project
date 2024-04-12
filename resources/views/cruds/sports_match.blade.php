@@ -167,7 +167,6 @@
 
     @include('modal_form.add_sportsmatch')
 
-
     <div class="sm:ml-64">
         <!-- Start block -->
         <section class="p-3 sm:p-5 antialiased">

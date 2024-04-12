@@ -60,9 +60,11 @@
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="p-4">Members</th>
+                                    <th scope="col" class="p-4">name</th>
+                                    <th scope="col" class="p-4">section</th>
                                     <th scope="col" class="p-4">School</th>
                                     <th scope="col" class="p-4">Sports Category</th>
+                                    <th scope="col" class="p-4">Program</th>
                                     <th scope="col" class="p-4">Action</th>
                                 </tr>
                             </thead>
@@ -89,7 +91,7 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="POST" action="{{ url('add_players') }}">
+                <form method="POST" action="{{ url('add_players') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
@@ -154,6 +156,23 @@
                             @endforelse
                             
                         </select>
+                    </div>
+                    <div class="mb-4">
+                        <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profile</span>
+                        <div class="flex justify-center items-center w-full">
+                            <label for="profile" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                                <div class="flex flex-col justify-center items-center pt-5 pb-6">
+                                    <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                    </svg>
+                                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                        <span class="font-semibold">Click to upload</span>
+                                        or drag and drop
+                                    </p>
+                                </div>
+                                <input name="profile" id="profile" type="file" class="hidden">
+                            </label>
+                        </div>
                     </div>
                     <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
                         <button type="submit" class="bg-blue-500 w-full sm:w-auto justify-center text-white inline-flex bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Add Players</button>

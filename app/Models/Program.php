@@ -16,6 +16,7 @@ class Program extends Model
         'school_id',
         'program_initials',
         'program_name',
+        'points',
     ];
 
     public function school(): BelongsTo

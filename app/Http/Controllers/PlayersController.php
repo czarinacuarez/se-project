@@ -23,19 +23,29 @@ class PlayersController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'section' => ['required', 'string', 'max:255'],
+            'profile' => ['required'],
         ]);
 
-        $player_lists = Players::Create([
-            'school_id' => $request->school_id,
-            'sports_id' => $request->sports_id,
-            'program_id' => $request->program_id,
-            'name' => $request->name,
-            'section' => $request->section,
-        ]);
+        if ($request->hasFile('profile')) {
+            $uploadedLogo = $request->file('profile');
+            $profileImage = time() . '.' . $uploadedLogo->getClientOriginalExtension();
 
-        $player_lists->save();
+            $directory = 'profiles';
+            $uploadedLogo->storeAs('public/' . $directory, $profileImage);
 
-        return back();
+            $player_lists = Players::Create([
+                'school_id' => $request->school_id,
+                'sports_id' => $request->sports_id,
+                'program_id' => $request->program_id,
+                'name' => $request->name,
+                'profile' => $profileImage,
+                'section' => $request->section,
+            ]);
+
+            $player_lists->save();
+
+            return back();
+        }
     }
 
     public function UpdatePlayer(Request $request, $id) {

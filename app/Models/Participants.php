@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Contest;
+use App\Models\Program;
 
 class Participants extends Model
 {
@@ -15,6 +18,16 @@ class Participants extends Model
         'contest_id',
         'program_id',
         'name',
-        'section'
+        'profile',
+        'section',
     ];
+
+    public function Contest(): BelongsTo
+    {
+        return $this->belongsTo(Contest::class);
+    }
+    public function program(): BelongsTo
+    {
+        return $this->belongsTo(Program::class);
+    }
 }
