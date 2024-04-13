@@ -17,6 +17,7 @@ use App\Http\Controllers\ContestAwardsController;
 use App\Http\Controllers\ContestantPlacementController;
 use App\Http\Controllers\SpecialAwardsController;
 use App\Http\Controllers\ScoresController;
+use App\Http\Controllers\EventsController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -57,9 +58,6 @@ Route::get('/msnu', function () {
     return view('guest.msnu');
 })->name('msnu');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     // School Controller
@@ -86,6 +84,9 @@ Route::middleware('auth')->group(function () {
     // Scores Controller
     Route::get('/scores', [ScoresController::class, 'index'])->name('scores');
 
+    // Events Controller
+    Route::get('/dashboard', [EventsController::class, 'index'])->name('dashboard');
+    
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -162,6 +163,11 @@ Route::middleware('auth')->group(function () {
     Route::post('add_scores', [ScoresController::class, 'AddScores']);
     Route::put('update_scores/{id}', [ScoresController::class, 'UpdateScores']);
     Route::delete('delete_scores/{id}', [ScoresController::class, 'DeleteScores']); 
+
+    // Events Controller
+    Route::post('add_events', [EventsController::class, 'AddEvents']);
+    Route::put('update_events/{id}', [EventsController::class, 'UpdateEvents']);
+    Route::delete('delete_events/{id}', [EventsController::class, 'DeleteEvents']); 
 });
 
 require __DIR__.'/auth.php';
