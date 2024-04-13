@@ -14,6 +14,9 @@ use App\Http\Controllers\ContestMatchController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\ContestAwardsController;
+use App\Http\Controllers\ContestantPlacementController;
+use App\Http\Controllers\SpecialAwardsController;
+use App\Http\Controllers\ScoresController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -80,6 +83,9 @@ Route::middleware('auth')->group(function () {
     // Mr and Ms NU Controller
     Route::get('/Mr&MsNU', [MrAndMsNUController::class, 'index'])->name('mr_and_ms');
 
+    // Scores Controller
+    Route::get('/scores', [ScoresController::class, 'index'])->name('scores');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -127,6 +133,16 @@ Route::middleware('auth')->group(function () {
     Route::put('update_contestant/{id}', [MrAndMsNUController::class, 'UpdateContestant']);
     Route::delete('delete_contestant/{id}', [MrAndMsNUController::class, 'DeleteContestant']); 
 
+    // MrAndMsNU Placement Controller
+    Route::post('add_contestant_placement', [ContestantPlacementController::class, 'AddContestantPlacement']);
+    Route::put('update_contestant_placement/{id}', [ContestantPlacementController::class, 'UpdateContestantPlacement']);
+    Route::delete('delete_contestant_placement/{id}', [ContestantPlacementController::class, 'DeleteContestantPlacement']); 
+
+    // Special Awards Placement Controller
+    Route::post('add_special_awards', [SpecialAwardsController::class, 'AddSpecialAwards']);
+    Route::put('update_special_awards/{id}', [SpecialAwardsController::class, 'UpdateSpecialAwards']);
+    Route::delete('delete_special_awards/{id}', [SpecialAwardsController::class, 'DeleteSpecialAwards']); 
+
     // Sports Awards Controller
     Route::post('add_sports_awards', [SportsAwardsController::class, 'AddSportsAwards']);
     Route::put('update_sports_awards/{id}', [SportsAwardsController::class, 'UpdateSportsAwards']);
@@ -137,10 +153,15 @@ Route::middleware('auth')->group(function () {
     Route::put('update_contest_match/{id}', [ContestMatchController::class, 'UpdateContestMatch']);
     Route::delete('delete_contest_match/{id}', [ContestMatchController::class, 'DeleteContestMatch']); 
 
-     // Contest Awards Controller
-     Route::post('add_contest_awards', [ContestAwardsController::class, 'AddContestAwards']);
-     Route::put('update_contest_awards/{id}', [ContestAwardsController::class, 'UpdateContestAwards']);
-     Route::delete('delete_contest_awards/{id}', [ContestAwardsController::class, 'DeleteContestAwards']); 
+    // Contest Awards Controller
+    Route::post('add_contest_awards', [ContestAwardsController::class, 'AddContestAwards']);
+    Route::put('update_contest_awards/{id}', [ContestAwardsController::class, 'UpdateContestAwards']);
+    Route::delete('delete_contest_awards/{id}', [ContestAwardsController::class, 'DeleteContestAwards']); 
+
+    // Scores Controller
+    Route::post('add_scores', [ScoresController::class, 'AddScores']);
+    Route::put('update_scores/{id}', [ScoresController::class, 'UpdateScores']);
+    Route::delete('delete_scores/{id}', [ScoresController::class, 'DeleteScores']); 
 });
 
 require __DIR__.'/auth.php';

@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contestant', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('section');
-            $table->string('profile');
-            $table->foreignId('program_id')->constrained('program');
+            $table->foreignId('match_id')->constrained('sports_match');
+            $table->foreignId('school_id')->constrained('school');
+            $table->string('scores');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contestant');
+        Schema::dropIfExists('scores');
     }
 };

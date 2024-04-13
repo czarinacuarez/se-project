@@ -1,17 +1,17 @@
 <tbody>
-    @forelse($contestant_lists as $lists)
+    @forelse($score_lists as $lists)
         <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div class="flex items-center mr-3">
-                    <img src="{{ asset('storage/profiles/' . $lists->profile) }}" alt="school" class="h-8 w-8 mr-3">
-                    <span>{{ $lists->name }}</span>
+                    <img src="{{ asset('storage/images/' . $lists->school->school_logo) }}" alt="school" class="h-8 w-8 mr-3">
+                    <span>{{ $lists->school->school_initials }}</span>
                 </div>
             </th>
             <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->section }}</span>
+                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->match_id }}</span>
             </td>
             <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->program->program_name}}</span>
+                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->scores }}</span>
             </td>
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div class="flex items-center space-x-4">

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Program;
 use App\Models\School;
 use App\Models\MrAndMsNU;
+use App\Models\ContestantPlacement;
+use App\Models\SpecialAwards;
 use Illuminate\Support\Facades\Storage;
 
 class MrAndMsNUController extends Controller
@@ -14,8 +16,10 @@ class MrAndMsNUController extends Controller
         $program_lists = Program::all();
         $school_lists = School::all();
         $contestant_lists = MrAndMsNU::all();
+        $contestant_placement_lists = ContestantPlacement::all();
+        $special_award_lists = SpecialAwards::all();
 
-        return view('cruds.MrMsNU', compact(['program_lists', 'school_lists', 'contestant_lists']));
+        return view('cruds.MrMsNU', compact(['program_lists', 'school_lists', 'contestant_lists', 'contestant_placement_lists', 'special_award_lists']));
     }
 
     public function AddContestant(Request $request) {
@@ -23,7 +27,6 @@ class MrAndMsNUController extends Controller
             $request->validate([
                 'name' => ['required'],
                 'section' => ['required'],
-                'awards'  => ['required'],
                 'program_id' => ['required'],
                 'profile' => ['required'],
             ]);
@@ -38,7 +41,6 @@ class MrAndMsNUController extends Controller
                 $mr_ms_nu = MrAndMsNU::create([
                     'name' => $request->name,
                     'section' => $request->section,
-                    'awards' => $request->awards,
                     'program_id' => $request->program_id,
                     'profile' => $profileImage,
                 ]);
@@ -58,7 +60,6 @@ class MrAndMsNUController extends Controller
         if($contestant) {
             $contestant->name = $request->input('name');
             $contestant->section = $request->input('section');
-            $contestant->awards = $request->input('awards');
             $contestant->program_id = $request->input('program_id');
             $contestantLL = $request->file('profile');
             

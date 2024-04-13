@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contestant', function (Blueprint $table) {
+        Schema::create('contestant_placement', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('section');
-            $table->string('profile');
-            $table->foreignId('program_id')->constrained('program');
+            $table->foreignId('contestant_id')->constrained('contestant');
+            $table->string('placement');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contestant');
+        Schema::dropIfExists('contestant_placement');
     }
 };
