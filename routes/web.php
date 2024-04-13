@@ -11,6 +11,7 @@ use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\MrAndMsNUController;
 use App\Http\Controllers\SportsAwardsController;
 use App\Http\Controllers\ContestMatchController;
+use App\Http\Controllers\WelcomeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +26,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
 
 Route::get('/about', function () {
     return view('guest.about');

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+        <link rel="shortcut icon" href="{{ asset('images/uweeklogo.png') }}">
         <title>NUFV University Week</title>
         <link rel="stylesheet" href="/css/styles.css">
 
@@ -102,7 +102,7 @@
           {{ $slot }}
         </div>
         @else
-        <div class="relative mt-16 :justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-white dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
+        <div class="relative mt-16 :justify-center sm:items-center min-h-screen md:mt-3 bg-dots-darker bg-center bg-gray-50 dark:bg-dots-lighter  selection:bg-red-500 selection:text-white">
           {{ $slot }}
         </div>
     @endif

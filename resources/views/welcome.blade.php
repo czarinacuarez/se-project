@@ -40,12 +40,12 @@
             class = "mx-auto py-4 flex flex-col md:flex-row items-center justify-between md:max-w-7xl mx-auto px-5 md:px-10">
             <h1 class = "text-2xl sm:text-4xl lg:text-5xl py-2 text-center md:text-left text-blue-800 font-extrabold ">
                 Participating Schools </h1>
-            <a href=""
+            <a href="{{  route('gallery')  }}"
                 class="bg-yellow-400 hover:bg-blue-800 text-blue-800 hover:text-white  text-center text-lg text-2xl font-bold py-2 px-6 lg:py-4 lg:px-8 rounded-full">
                 View Gallery
             </a>
         </div>
-        <div class = "grid grid-cols-2 gap-5 md:gap-0 md:grid-cols-6 md:max-w-7xl  mx-auto  md:px-10 py-4 my-5">
+        <div class = "grid grid-cols-2 gap-2  md:gap-0 md:grid-cols-6 md:max-w-7xl px-4 mx-auto  md:px-10 py-4 my-5">
             <div class = "bg-yellow-400 w-4/5 rounded-lg mx-auto p-2">
                 <img src = "images/SBAlogo.png">
             </div>
@@ -125,10 +125,13 @@
             </div>
             
             <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
+
+
                 <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PROGRAM'S SCOREBOARD</h1>
-                <p class = " text-sm lg:text-base lg:text-center text-center italic ">University Week stands out as
-                    the highly anticipated annual event.
+                <p class="text-sm lg:text-base font-normal lg:text-center text-center italic">
+                    Updated as of {{ $latestUpdated->first()->updated_at->format('F j, Y h:ia') }}
                 </p>
+                
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -142,39 +145,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($programs as $program)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
+                                    <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $program->school->school_logo )}}" alt="Jese image">
                                     <div class="ps-3">
-                                        <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                    </div>
-                                </td>
-                                <td class="py-4 px-3">
-                                    <div class="flex flex-col items-left">
-                                        <div class="">
-                                            <h1 class="text-xl font-bold">3</h1>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                    <div class="ps-3">
-                                        <div class="text-base text-blue-800 font-semibold">ATENEO DE MANILA</div>
+                                        <div class="text-base text-blue-800 font-semibold">{{$program->program_name}}</div>
                                     </div>
                                 </td>
                                 <td class=" px-3 py-4">
                                     <div class="flex flex-col items-left">
                                         <div class="">
-                                            <h1 class="text-xl font-bold">3</h1>
+                                            <h1 class="text-xl font-bold">{{$program->points}}</h1>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
+                        @endforeach
+
                     </table>
-                    
                 </div>
             </div>
         </div>
@@ -192,30 +182,79 @@
                     class="w-full inline-flex  flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
                     <ul x-ref="logos"
                         class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll">
-                        <li>
-                            <img src="./facebook.svg" alt="Facebook" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\BASKETBALL.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Basketball</p>
                         </li>
-                        <li>
-                            <img src="./disney.svg" alt="Disney" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\VOLLEYBALL.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Volleyball</p>
                         </li>
-                        <li>
-                            <img src="./airbnb.svg" alt="Airbnb" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\BOWLING.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Bowling</p>
                         </li>
-                        <li>
-                            <img src="./apple.svg" alt="Apple" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\CHESS.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Chess</p>
                         </li>
-                        <li>
-                            <img src="./spark.svg" alt="Spark" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\TABLE TENNIS.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Table Tennis</p>
                         </li>
-                        <li>
-                            <img src="./samsung.svg" alt="Samsung" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\BATTLE OF THE BANDS.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Battle of the Bands</p>
                         </li>
-                        <li>
-                            <img src="./quora.svg" alt="Quora" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\BATTLE OF THE BRAINS.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Battle of the Brains</p>
                         </li>
-                        <li>
-                            <img src="./sass.svg" alt="Sass" />
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\DANCE BATTLE.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Dance Battle</p>
                         </li>
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\DEBATE.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Debate</p>
+                        </li>
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\ESPORTS COD.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Call of Duty</p>
+                        </li>
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\ESPORTS ML.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Mobile Legends</p>
+                        </li>
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\ESPORTS VALORANT.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Valorant</p>
+                        </li>
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\PEERLYMPICS.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Peerlympics</p>
+                        </li>
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\PET FASHION SHOW.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Pet Fashion Show</p>
+                        </li>
+                      
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\POSTER MAKING.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Poster Making</p>
+                        </li>
+                      
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\RUBIKS CUBE.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Rubiks Cube</p>
+                        </li>
+
+                        <li class = "flex flex-col items-center justify-center">
+                            <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\SHELFIE.svg" alt="Facebook" />
+                            <p class = "text-white my-2 text-center">Shelfie</p>
+                        </li>
+                      
+                      
                     </ul>
                 </div>
             </div>
@@ -275,7 +314,7 @@
             </div>
 
             <div class="lg:py-8 py-4 mx-auto text-center">
-                <a href=""
+                <a href="{{  route('sports')  }}"
                     class="bg-yellow-400 hover:bg-blue-800 text-blue-800 hover:text-white  text-lg text-2xl font-bold py-2 px-6 lg:py-4 lg:px-8 rounded-full">
                     View More Sports Match
                 </a>
@@ -305,7 +344,7 @@
                 </div>
             </div>
             <div class="lg:py-8 py-4 mx-auto text-center">
-                <a href=""
+                <a href="{{  route('contest')  }}"
                     class="bg-yellow-400 hover:bg-blue-800 text-blue-800 hover:text-white  text-lg text-2xl font-bold py-2 px-6 lg:py-4 lg:px-8 rounded-full">
                     View More Contest Match
                 </a>
@@ -316,20 +355,20 @@
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800  font-extrabold ">UPCOMING EVENTS
             </h1>
 
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-blue-800 grid grid-cols-3">
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-orange-100 grid grid-cols-3">
                 <div class = "col-span-1 flex items-center justify-center ">
                     <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
                 </div>
                 <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg">BATTLE OF THE BANDS</h1>
-                    <p class="text-white italic text-sm">March 08, 2023</p>
+                    <h1 class=" font-bold text-lg">BATTLE OF THE BANDS</h1>
+                    <p class="italic text-sm">March 08, 2023</p>
 
-                    <div class = "py-3 flex gap-1 text-white">
+                    <div class = "py-3 flex gap-1 ">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                           </svg>
                           
-                        <p class="text-white font-bold text-base">National University Fairview</p>
+                        <p class=" font-bold text-base">National University Fairview</p>
                     </div>
                 </div>
             </div>
