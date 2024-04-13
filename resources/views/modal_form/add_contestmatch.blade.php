@@ -14,35 +14,41 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form method="POST" action="{{ url('add_Contest') }}">
+            <form method="POST" action="{{ url('add_contest_match') }}">
                 @csrf
                 <div class="mb-4">
                     <div>
-                        <label for="Contest_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Match</label>
-                        <input type="text" name="Contest_category" id="Contest_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type match name" required="">
+                        <label for="match_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Match</label>
+                        <input type="text" name="match_name" id="match_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type match name" required="">
                     </div>
                 </div>
                 <div class="mb-4">
                     <div>
-                        <label for="Contest_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date & Time</label>
-                        <input type="text" name="Contest_category" id="Contest_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type match name" required="">
+                        <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+                        <input type="date" name="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type match name" required="">
                     </div>
                 </div>
                 <div class="mb-4">
                     <div>
-                        <label for="Contest_category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
-                        <input type="text" name="Contest_category" id="Contest_category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type location" required="">
+                        <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Location</label>
+                        <input type="text" name="location" id="location" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type location" required="">
                     </div>
                 </div>
-                <div class = "mb-4">
+                <div class="mb-4">
                     <div class="flex gap-2">
-                        <label for="school_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Category</label>
-                       
+                        <label for="contest_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Category</label>
+                        <button type="button" id="createSchoolModal" data-modal-target="schoolModal" data-modal-toggle="schoolModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <svg class="h-5 w-5 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                            </svg>
+                        </button>
                     </div>
-                    <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option class="p-2" value=""></option>
+                    <select id="contest_id" name="contest_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        @forelse ($contest_lists as $lists)
+                            <option class="p-2" value="{{ $lists->id }}">{{ $lists->contest_category }}</option>
+                        @empty
 
-                        
+                        @endforelse
                     </select>
                 </div>
                 <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">

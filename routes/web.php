@@ -9,6 +9,8 @@ use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\ContestController;
 use App\Http\Controllers\ParticipantsController;
 use App\Http\Controllers\MrAndMsNUController;
+use App\Http\Controllers\SportsAwardsController;
+use App\Http\Controllers\ContestMatchController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -123,6 +125,16 @@ Route::middleware('auth')->group(function () {
     Route::post('add_contestants', [MrAndMsNUController::class, 'AddContestant']);
     Route::put('update_contestant/{id}', [MrAndMsNUController::class, 'UpdateContestant']);
     Route::delete('delete_contestant/{id}', [MrAndMsNUController::class, 'DeleteContestant']); 
+
+    // Sports Awards Controller
+    Route::post('add_sports_awards', [SportsAwardsController::class, 'AddSportsAwards']);
+    Route::put('update_sports_awards/{id}', [SportsAwardsController::class, 'UpdateSportsAwards']);
+    Route::delete('delete_sports_awards/{id}', [SportsAwardsController::class, 'DeleteSportsAwards']); 
+
+    // Contest Match Controller
+    Route::post('add_contest_match', [ContestMatchController::class, 'AddContestMatch']);
+    Route::put('update_contest_match/{id}', [ContestMatchController::class, 'UpdateContestMatch']);
+    Route::delete('delete_contest_match/{id}', [ContestMatchController::class, 'DeleteContestMatch']); 
 });
 
 require __DIR__.'/auth.php';

@@ -43,7 +43,6 @@
                             @empty
 
                             @endforelse
-                            
                         </select>
                     </div>
                 </div>
