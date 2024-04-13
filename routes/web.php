@@ -18,6 +18,7 @@ use App\Http\Controllers\ContestantPlacementController;
 use App\Http\Controllers\SpecialAwardsController;
 use App\Http\Controllers\ScoresController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\CScoreController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -173,6 +174,11 @@ Route::middleware('auth')->group(function () {
     Route::post('add_events', [EventsController::class, 'AddEvents']);
     Route::put('update_events/{id}', [EventsController::class, 'UpdateEvents']);
     Route::delete('delete_events/{id}', [EventsController::class, 'DeleteEvents']); 
+
+    // CMatch Scores Controller
+    Route::post('add_cscores', [CScoreController::class, 'AddCMatchScore']);
+    Route::put('update_cscores/{id}', [CScoreController::class, 'UpdateCMatchScore']);
+    Route::delete('delete_cscores/{id}', [CScoreController::class, 'DeleteCMatchScore']); 
 });
 
 require __DIR__.'/auth.php';

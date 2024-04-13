@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\SportsMatch;
 use App\Models\School;
 use App\Models\Scores;
+use App\Models\ContestMatch;
+use App\Models\Program;
+use App\Models\CScore;
 
 class ScoresController extends Controller
 {
@@ -13,8 +16,11 @@ class ScoresController extends Controller
         $score_lists = Scores::all();
         $sport_match_lists = SportsMatch::all();
         $school_lists = School::all();
+        $contest_match_lists = ContestMatch::all();
+        $program_lists = Program::all();
+        $cscore_lists = CScore::all();
 
-        return view('cruds.scores', compact(['sport_match_lists', 'school_lists', 'score_lists']));
+        return view('cruds.scores', compact(['sport_match_lists', 'school_lists', 'score_lists', 'contest_match_lists', 'program_lists', 'cscore_lists']));
     }
 
     public function AddScores(Request $request) {
@@ -37,16 +43,26 @@ class ScoresController extends Controller
             dd($th);
         }
     }
+    public function UpdateScores (Request $request, $id) {
+        $scores = Scores::find($id);
+        $scores->match_id = $request->input('match_id');
+        $scores->school_id = $request->input('school_id');
+        $scores->scores = $request->input('scores');
 
+        $scores->update();
+        return redirect()->back()->with('status','Updated Successfully');
+    }
+    public function DeleteScores(Request $request, $id) {
+        $scores = Scores::find($id);
+
+        $scores->delete();
+        return redirect()->back()->with('status','Deleted Successfully');
+    }
     public function contestscores($id){
-
         $match_id = $id;
-    
-    
         $school_lists = School::all();
 
         $scores = Scores::where('match_id', $match_id)->with('school')->get();
-
 
         return view('cruds.contest_scores', ['school_lists' => $school_lists, 'match_id' => $match_id, 'scores' => $scores]);
     }

@@ -24,7 +24,7 @@ class Scores extends Model
     {
         return $this->belongsTo(School::class);
     }
-    public function SportMatch(): BelongsTo
+    public function match(): BelongsTo
     {
         return $this->belongsTo(SportsMatch::class);
     }
