@@ -89,6 +89,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+    Route::get('contest/scores/{id}', [ScoresController::class, 'contestscores'])->name('contest.scores');
+    Route::get('sports/scores/{id}', [SportsController::class, 'scores'])->name('sports.scores');
+
 });
 
 // crud route
@@ -159,9 +164,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('delete_contest_awards/{id}', [ContestAwardsController::class, 'DeleteContestAwards']); 
 
     // Scores Controller
-    Route::post('add_scores', [ScoresController::class, 'AddScores']);
+    Route::post('add_scores', [ScoresController::class, 'AddScores'])->name('add.scores');
     Route::put('update_scores/{id}', [ScoresController::class, 'UpdateScores']);
     Route::delete('delete_scores/{id}', [ScoresController::class, 'DeleteScores']); 
+
+
+
 });
 
 require __DIR__.'/auth.php';

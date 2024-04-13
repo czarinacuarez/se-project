@@ -37,4 +37,18 @@ class ScoresController extends Controller
             dd($th);
         }
     }
+
+    public function contestscores($id){
+
+        $match_id = $id;
+    
+    
+        $school_lists = School::all();
+
+        $scores = Scores::where('match_id', $match_id)->with('school')->get();
+
+
+        return view('cruds.contest_scores', ['school_lists' => $school_lists, 'match_id' => $match_id, 'scores' => $scores]);
+    }
+
 }

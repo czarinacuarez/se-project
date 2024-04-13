@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>NUFV University Week</title>
-        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}">
+        <link rel="shortcut icon" href="{{ asset('images/uweeklogo.png') }}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

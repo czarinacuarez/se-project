@@ -29,3 +29,4 @@ class Scores extends Model
         return $this->belongsTo(SportsMatch::class);
     }
 }
+
