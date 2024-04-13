@@ -12,6 +12,8 @@ use App\Http\Controllers\MrAndMsNUController;
 use App\Http\Controllers\SportsAwardsController;
 use App\Http\Controllers\ContestMatchController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ResultController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/result', [ResultController::class, 'index'])->name('result');
 
 
 Route::get('/about', function () {
@@ -37,9 +40,7 @@ Route::get('/sports', function () {
     return view('guest.sports');
 })->name('sports');
 
-Route::get('/result', function () {
-    return view('guest.result');
-})->name('result');
+
 
 Route::get('/gallery', function () {
     return view('guest.participants');

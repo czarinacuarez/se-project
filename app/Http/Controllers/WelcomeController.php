@@ -10,10 +10,15 @@ class WelcomeController extends Controller
 {
     public function index(){
 
-        $programs = Program::orderBy('points', 'asc')->with('school')->get();
+        $programs = Program::orderBy('points', 'desc')
+        ->with('school')
+        ->get();
         $latestUpdated = Program::latest('updated_at')->get();
+        $schools = School::all();
 
-        return view('welcome',  compact(['programs' , 'latestUpdated']));
+        $latestUpdatedSchool = School::latest('updated_at')->get();
+
+        return view('welcome',  compact(['programs' , 'latestUpdated', 'latestUpdatedSchool','schools']));
 
     }
 
