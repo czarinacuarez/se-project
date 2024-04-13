@@ -43,6 +43,7 @@
                                 <tr>
                                     <th scope="col" class="p-4">School Initial</th>
                                     <th scope="col" class="p-4">School</th>
+                                    <th scope="col" class="p-4">Points</th>
                                     <th scope="col" class="p-4">Actions</th>
                                 </tr>
                             </thead>
@@ -79,6 +80,10 @@
                         <input type="text" name="school_name" id="school_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ $lists->school_name }}" placeholder="Type product name" required="">
                     </div>     
                 </div>
+            </div>
+            <div class="mt-4">
+                <label for="points" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Points</label>
+                <input type="number" name="points" id="points" value="{{ $lists->points }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
             </div>
             <div class="my-4">
                 <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Logo</span>

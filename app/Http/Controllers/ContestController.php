@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contest;
 use App\Models\ContestMatch;
+use App\Models\Program;
+use App\Models\ContestAwards;
 
 class ContestController extends Controller
 {
     public function index() {
         $contest_lists = Contest::all();
         $contest_match_lists = ContestMatch::all();
+        $program_lists = Program::all();
+        $contest_awards_lists = ContestAwards::all();
 
-        return view('cruds.contest_match', ['contest_lists' => $contest_lists, 'contest_match_lists' => $contest_match_lists]);
+        return view('cruds.contest_match', ['contest_lists' => $contest_lists, 'contest_match_lists' => $contest_match_lists, 'program_lists' => $program_lists, 'contest_awards_lists' => $contest_awards_lists]);
     }
     public function AddContest(Request $request) {
         try {

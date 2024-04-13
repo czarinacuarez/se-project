@@ -14,5 +14,6 @@ class School extends Model
         'school_initials',
         'school_name',
         'school_logo',
+        'points',
     ];
 }

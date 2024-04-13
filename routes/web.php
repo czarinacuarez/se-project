@@ -13,7 +13,7 @@ use App\Http\Controllers\SportsAwardsController;
 use App\Http\Controllers\ContestMatchController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ResultController;
-
+use App\Http\Controllers\ContestAwardsController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -136,6 +136,11 @@ Route::middleware('auth')->group(function () {
     Route::post('add_contest_match', [ContestMatchController::class, 'AddContestMatch']);
     Route::put('update_contest_match/{id}', [ContestMatchController::class, 'UpdateContestMatch']);
     Route::delete('delete_contest_match/{id}', [ContestMatchController::class, 'DeleteContestMatch']); 
+
+     // Contest Awards Controller
+     Route::post('add_contest_awards', [ContestAwardsController::class, 'AddContestAwards']);
+     Route::put('update_contest_awards/{id}', [ContestAwardsController::class, 'UpdateContestAwards']);
+     Route::delete('delete_contest_awards/{id}', [ContestAwardsController::class, 'DeleteContestAwards']); 
 });
 
 require __DIR__.'/auth.php';

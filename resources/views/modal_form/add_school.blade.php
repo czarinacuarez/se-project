@@ -26,6 +26,10 @@
                     </div>
                 </div>
                 <div class="mb-4">
+                    <label for="points" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Points</label>
+                    <input type="number" name="points" id="points" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                </div>
+                <div class="mb-4">
                     <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Images</span>
                     <div class="flex justify-center items-center w-full">
                         <label for="school_logo" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">

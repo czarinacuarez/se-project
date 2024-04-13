@@ -42,6 +42,7 @@ class ProgramController extends Controller
         $program = Program::find($id);
         $program->program_initials = $request->input('program_initials');
         $program->program_name = $request->input('program_name');
+        $program->points = $request->input('points');
 
         $program->update();
         return redirect()->back()->with('status','Updated Successfully');

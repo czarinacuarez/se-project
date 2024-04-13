@@ -14,36 +14,40 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form method="POST" action="{{ url('add_sport') }}">
-                <div class = "mb-4">
-                    <div class="flex gap-2">
-                        <label for="school_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Category</label>
-                       
-                    </div>
-                    <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option class="p-2" value=""></option>         
-                    </select>
-                </div>
-                <div class = "mb-4">
-                    <div class="flex gap-2">
-                        <label for="school_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
-                       
-                    </div>
-                    <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option class="p-2" value=""></option>         
-                    </select>
-                </div>
-        
+            <form method="POST" action="{{ url('add_contest_awards') }}">
+                @csrf
                 <div class="mb-4">
                     <div class="flex gap-2">
-                        <label for="school_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Championship</label>
-                       
+                        <label for="contest_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Category</label>
                     </div>
-                    <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option class="" value="0">Champion</option>
-                            <option class="" value="1">1st Place</option>         
-                            <option class="" value="2">2nd Place</option>         
-       
+                    <select id="contest_id" name="contest_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        @forelse ($contest_lists as $lists)
+                            <option class="p-2" value="{{ $lists->id }}">{{ $lists->contest_category }}</option>
+                        @empty
+
+                        @endforelse
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <div class="flex gap-2">
+                        <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
+                    </div>
+                    <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        @forelse ($program_lists as $lists)
+                            <option class="p-2" value="{{ $lists->id }}">{{ $lists->program_name }}</option>
+                        @empty
+
+                        @endforelse
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <div class="flex gap-2">
+                        <label for="championship" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Championship</label>
+                    </div>
+                    <select id="championship" name="championship" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="Champion">Champion</option>
+                            <option value="1st Place">1st Place</option>         
+                            <option value="2nd Place">2nd Place</option>         
                     </select>
                 </div>
              

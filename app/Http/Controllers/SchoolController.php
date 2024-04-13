@@ -18,6 +18,7 @@ class SchoolController extends Controller
         $request->validate([
             'school_initials' => ['required', 'string', 'max:255'],
             'school_name' => ['required', 'string', 'max:255'],
+            'points' => ['required'],
             'school_logo' => ['required'],
         ]);
 
@@ -31,6 +32,7 @@ class SchoolController extends Controller
             $school_list = School::create([
                 'school_initials' => $request->school_initials,
                 'school_name' => $request->school_name,
+                'points' => $request->points,
                 'school_logo' => $schoolImage,
             ]);
 
@@ -46,6 +48,7 @@ class SchoolController extends Controller
         if($school) {
             $school->school_initials = $request->input('school_initials');
             $school->school_name = $request->input('school_name');
+            $school->points = $request->input('points');
             $schoolLL = $request->file('school_logo');
             
             if ($request->hasFile('school_logo')) {
