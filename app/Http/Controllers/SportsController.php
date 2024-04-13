@@ -5,6 +5,7 @@ use App\Models\Sports;
 use App\Models\SportsMatch;
 use App\Models\School;
 use App\Models\SportsAwards;
+use App\Models\Scores;
 
 use Illuminate\Http\Request;
 
@@ -52,4 +53,19 @@ class SportsController extends Controller
         $sport->delete();
         return redirect()->back()->with('status','Deleted Successfully');
     }
+
+    public function scores($id){
+
+        $match_id = $id;
+    
+    
+        $school_lists = School::all();
+
+        $scores = Scores::where('match_id', $match_id)->with('school')->get();
+
+
+        return view('cruds.sports_scores', ['school_lists' => $school_lists, 'match_id' => $match_id, 'scores' => $scores]);
+    }
+
+
 }
