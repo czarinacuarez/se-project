@@ -61,10 +61,11 @@ class ScoresController extends Controller
     public function contestscores($id){
         $match_id = $id;
         $program_lists = Program::all();
+        $match_name = ContestMatch::where('id', $match_id)->value('match_name');
 
-        $scores = Scores::where('match_id', $match_id)->with('contest')->get();
+        $cscores = CScore::where('cmatch_id', $match_id)->with('contest')->get();
 
-        return view('cruds.contest_scores', ['school_lists' => $program_lists, 'match_id' => $match_id, 'scores' => $scores]);
+        return view('cruds.contest_scores', ['match_name' => $match_name, 'program_lists' => $program_lists, 'match_id' => $match_id, 'cscores' => $cscores]);
     }
 
 }

@@ -176,7 +176,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('delete_events/{id}', [EventsController::class, 'DeleteEvents']); 
 
     // CMatch Scores Controller
-    Route::post('add_cscores', [CScoreController::class, 'AddCMatchScore']);
+    Route::post('add_cscores', [CScoreController::class, 'AddCMatchScore'])->name('add_cscores');
     Route::put('update_cscores/{id}', [CScoreController::class, 'UpdateCMatchScore']);
     Route::delete('delete_cscores/{id}', [CScoreController::class, 'DeleteCMatchScore']); 
 });

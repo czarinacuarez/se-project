@@ -8,7 +8,7 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div class="flex-1 flex items-center space-x-2">
                             <h5>
-                                <span class="text-gray-500">Update Result for Match : Match Name </span>
+                                <span class="text-gray-500">Update Result for Match : {{ $match_name }} </span>
                             </h5>
                         </div>
                     </div>
@@ -33,46 +33,11 @@
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                @forelse ($scores as $lists)
-                                    <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                        
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center mr-3">
-                                                <img src="{{ asset('storage/images/' . $lists->school->school_logo) }}" alt="school" class="h-8 w-8 mr-3">
-
-                                                <span> {{ $lists->school->school_name }}</span>
-                                            </div>
-                                        </th>
-                                        <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center mr-3">
-                                                <span>{{ $lists->scores }}</span>
-                                            </div>
-                                        </th>
-                                       
-                                        <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <div class="flex items-center space-x-4">
-                                               
-                                                <button type="button" data-drawer-target="drawer-update-match-{{ $lists->id }}" data-drawer-show="drawer-update-match-{{ $lists->id }}" aria-controls="drawer-update-match-{{ $lists->id }}" class="bg-blue-400 py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                                        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
-                                                    </svg>
-                                                    Edit
-                                                </button>
-                                                <button type="button" data-modal-target="delete-modal-{{ $lists->id }}" data-modal-toggle="delete-modal-{{ $lists->id }}" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                                                    </svg>
-                                                    Delete
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr> 
-                                @empty
-                            
-                                @endforelse
-                            </tbody>
+                                <tbody>
+                                    @include('crud_components.cmatch_score_table')
+                                    
+                                </tbody>
+                                
                         </table>
                     </div>
                 </div>
@@ -96,17 +61,17 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form method="POST" action="{{ route('add.scores') }}">
+                <form method="POST" action="{{ route('add_cscores') }}">
                     @csrf
 
-                    <input type="hidden" name="match_id" value="{{ $match_id }}">
+                    <input type="hidden" name="cmatch_id" value="{{ $match_id }}">
                     <div class="mb-4">
                         <div class="flex gap-2">
-                            <label for="school_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Teams</label>
+                            <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Teams</label>
                         </div>
-                        <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            @forelse ($school_lists as $lists)
-                                <option class="p-2" value="{{ $lists->id }}"> {{$lists->school_name }}</option>
+                        <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            @forelse ($program_lists as $lists)
+                                <option class="p-2" value="{{ $lists->id }}"> {{$lists->program_name }}</option>
                             @empty
 
                             @endforelse
@@ -132,7 +97,7 @@
         </div>
     </div>
 
-    @forelse($scores as $lists)
+    @forelse($cscores as $lists)
         <form method="POST" action="{{ url('update_scores', ['id' => $lists->id]) }}" enctype="multipart/form-data" id="drawer-update-match-{{ $lists->id}}" class="fixed top-0 left-0 z-40 w-full h-screen max-w-xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-match-label" aria-hidden="true">
             @csrf
             @method('PUT')
@@ -153,11 +118,11 @@
             </div>
             <div class="mb-4">
                 <div class="flex gap-2">
-                    <label for="school_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Teams</label>
+                    <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program Teams</label>
                 </div>
-                <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($school_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}"> {{$lists->school_name }}</option>
+                <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    @forelse ($program_lists as $lists)
+                        <option class="p-2" value="{{ $lists->id }}"> {{$lists->program_name }}</option>
                     @empty
 
                     @endforelse
@@ -178,7 +143,7 @@
     @endforelse
 
     <!-- Delete Modal -->
-    @forelse($scores as $lists)
+    @forelse($cscores as $lists)
         <div id="delete-modal-{{ $lists->id }}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full h-auto max-w-md max-h-full">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">

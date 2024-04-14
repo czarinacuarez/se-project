@@ -26,4 +26,9 @@ class CScore extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function contest()
+    {
+        return $this->belongsTo(Contest::class, 'contest_id');
+    }
 }

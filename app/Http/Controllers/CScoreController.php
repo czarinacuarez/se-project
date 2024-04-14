@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CScore;
+use App\Models\Program;
 
 class CScoreController extends Controller
 {
