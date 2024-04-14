@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Program;
 use App\Models\School;
-
+use App\Models\SportsMatch;
+use App\Models\Scores;
+use App\Models\ContestMatch;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class WelcomeController extends Controller
 {
@@ -18,7 +22,23 @@ class WelcomeController extends Controller
 
         $latestUpdatedSchool = School::latest('updated_at')->get();
 
-        return view('welcome',  compact(['programs' , 'latestUpdated', 'latestUpdatedSchool','schools']));
+        $today = Carbon::today();
+
+        $threeDaysAfter = $today->copy()->addDays(3);
+
+        $recentMatches = SportsMatch::whereDate('date', '>=', $today)
+        ->whereDate('date', '<=', $threeDaysAfter)
+        ->with(['schools', 'scores','sports'])
+        ->get();
+    
+
+        $recentContestMatches = ContestMatch::whereDate('date', '>=', $today)
+        ->whereDate('date', '<=', $threeDaysAfter)
+        ->with(['program', 'cmatch_score','contest'])
+        ->get();
+
+
+        return view('welcome',  compact(['programs' , 'recentMatches',  'latestUpdated', 'recentContestMatches', 'latestUpdatedSchool','schools']));
 
     }
 

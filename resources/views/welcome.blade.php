@@ -259,19 +259,73 @@
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">UPCOMING SPORT MATCHES
             </h1>
 
+            @foreach($recentMatches as $match)
+
+            <?php
+            $matchId = $match->id;
+        
+            $scoresCount = \App\Models\Scores::where('match_id', $matchId)->count();
+            ?>
+
+            
+            @if ($scoresCount == 2)
+
+
             <div class = "md:max-w-xl max-w-md mx-auto rounded-xl  my-4  grid grid-cols-4">
-                <div class = " col-span-2 bg-red-800  flex rounded-l-xl items-center justify-center ">
-                    <div class = "w-20 h-20 md:w-40 md:h-28">
-                        <img class = "w-full h-full" src = "images/SBAlogo.png">
-                    </div>
-                    <h1 class = "text-center text-sm text-white">March 20, 2023 </h1>
-                    <div class = "w-20 h-20 md:w-40 md:h-28"> 
-                        <img class = "w-full h-full" src = "images/SBAlogo.png">
-                    </div>                
+                <div class = " col-span-2  flex rounded-l-xl items-center justify-center
+                @if ($match->sports_id == 1 || $match->sports_id == 5)
+                bg-blue-200
+                @elseif ($match->sports_id == 2  || $match->sports_id == 6)
+                bg-orange-200
+                @elseif ($match->sports_id == 3  || $match->sports_id == 7)
+                bg-emerald-200
+
+                @elseif ($match->sports_id == 4  || $match->sports_id == 8)
+                bg-rose-200
+
+                @elseif ($match->sports_id == 5  || $match->sports_id == 9)
+                bg-lime-200
+
+                @else
+                bg-sky-200
+
+                @endif  ">
+                        <?php $matchs = 0; ?>
+
+                        @foreach ($match->scores as $index => $score)
+                            <div class="w-20 h-20 md:w-28 md:h-28">
+                                <img class="w-full h-full" src="{{ asset('storage/images/'. $score->school->school_logo ) }}">
+                            </div>
+                            <?php
+                                if ($matchs == 0) {
+                                    echo '<h1 class="text-center text-sm text-gray-600 col-span-2">March 20, 2023</h1>';
+                                }
+                                $matchs += 1;
+                            ?>
+                        @endforeach
+                   
+
                 </div>
-                <div class = " col-span-2  border border-4 p-4 border-red-800 rounded-r-xl flex items-center justify-center flex-col">
-                    <h1 class=" font-bold text-lg text-center">BATTLE OF THE BANDS</h1>
-                    <p class="italic text-sm">March 08, 2023</p>
+                <div class = " col-span-2  border border-4 p-4  rounded-r-xl flex items-center justify-center flex-col
+                @if ($match->sports_id == 1  || $match->sports_id == 5)
+                border-blue-200
+                @elseif ($match->sports_id == 2  || $match->sports_id == 6)
+                border-orange-200
+                @elseif ($match->sports_id == 3  || $match->sports_id == 7)
+                border-emerald-200
+
+                @elseif ($match->sports_id == 4  || $match->sports_id == 8)
+                border-rose-200
+
+                @elseif ($match->sports_id == 5  || $match->sports_id == 9)
+                border-lime-200
+
+                @else
+                border-sky-200
+
+                @endif">
+                    <h1 class=" font-bold  text-gray-600 text-lg text-center uppercase">{{$match->sports->sports_category}}</h1>
+                    <p class="italic text-gray-600 text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "justify-center items-center flex"> 
                         <div class = "py-3 flex gap-1 ">
@@ -279,31 +333,77 @@
                                 <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                               </svg>
                               
-                            <p class=" font-bold text-sm">National University Fairview</p>
+                            <p class=" font-bold  text-gray-600 text-sm">{{$match->location}}</p>
                         </div>
                     </div>
                     
                 </div>
             </div>
 
+            @elseif ($scoresCount !=0)
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 grid grid-cols-3
+            @if ($match->sports_id == 1 || $match->sports_id == 5)
+                bg-blue-600
+                @elseif ($match->sports_id == 2  || $match->sports_id == 6)
+                bg-orange-600
+                @elseif ($match->sports_id == 3  || $match->sports_id == 7)
+                bg-emerald-600
 
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-amber-600 grid grid-cols-3">
+                @elseif ($match->sports_id == 4  || $match->sports_id == 8)
+                bg-rose-600
+
+                @elseif ($match->sports_id == 5  || $match->sports_id == 9)
+                bg-lime-600
+
+                @else
+                bg-sky-600
+
+                @endif">
                 <div class = "col-span-1 flex items-center justify-center ">
-                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
+                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "
+                    @if($match->sports_id == 1)
+                    images\sportcontestlogo\BASKETBALL.svg
+                    @elseif($match->sports_id == 2)
+                    images\sportcontestlogo\BASKETBALL.svg
+                    @elseif($match->sports_id == 3)
+                    images\sportcontestlogo\BOWLING.svg
+                    @elseif($match->sports_id == 4)
+                    images\sportcontestlogo\VOLLEYBALL.svg
+                    @elseif($match->sports_id == 5)
+                    images\sportcontestlogo\VOLLEYBALL.svg
+                    @elseif($match->sports_id == 6)
+                    images\sportcontestlogo\TABLE TENNIS.svg
+                    @elseif($match->sports_id == 7)
+                    images\sportcontestlogo\ESPORTS COD.svg
+                    @elseif($match->sports_id == 8)
+                    images\sportcontestlogo\ESPORTS ML.svg
+                    @elseif($match->sports_id == 9)
+                    images\sportcontestlogo\ESPORTS COD.svg
+                    @elseif($match->sports_id == 10)
+                    images\sportscontestlogo\CHESS.svg                   
+                     @elseif($match->sports_id == 11)
+                    images\sportcontestlogo\RUBIKS CUBE.svg
+                    @endif
+                    ">
                 </div>
                 <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg">BATTLE OF THE BANDS</h1>
-                    <p class="text-white italic text-sm">March 08, 2023</p>
+                    <h1 class="text-white font-bold text-lg uppercase">{{$match->sports->sports_category}}</h1>
+                    <p class="text-white italic text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "py-3 flex gap-1 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                           </svg>
                           
-                        <p class="text-white font-bold text-base">National University Fairview</p>
+                        <p class="text-white font-bold text-base">{{$match->location}}</p>
                     </div>
                 </div>
             </div>
+
+            @else
+
+            @endif
+            @endforeach
 
             <div class="lg:py-8 py-4 mx-auto text-center">
                 <a href="{{  route('sports')  }}"
@@ -318,23 +418,44 @@
                 MATCHES
             </h1>
 
+            @foreach($recentContestMatches as $match)
+
             <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-green-600 grid grid-cols-3">
                 <div class = "col-span-1 flex items-center justify-center ">
-                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
+                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "
+                    @if($match->contest_id == 1)
+                    images\sportcontestlogo\BASKETBALL.svg
+                    @elseif($match->contest_id == 2)
+                    images\sportcontestlogo\BASKETBALL.svg
+                    @elseif($match->contest_id == 3)
+                    images\sportcontestlogo\BOWLING.svg
+                    @elseif($match->contest_id == 4)
+                    images\sportcontestlogo\VOLLEYBALL.svg
+                    @elseif($match->contest_id == 5)
+                    images\sportcontestlogo\VOLLEYBALL.svg
+                    @elseif($match->contest_id == 6)
+                    images\sportcontestlogo\TABLE TENNIS.svg
+                    @elseif($match->contest_id == 7)
+                    images\sportcontestlogo\ESPORTS COD.svg
+                    @elseif($match->contest_id == 8)
+                    images\sportcontestlogo\ESPORTS ML.svg
+                    @endif
+                    ">
                 </div>
                 <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg">BATTLE OF THE BANDS</h1>
-                    <p class="text-white italic text-sm">March 08, 2023</p>
+                    <h1 class="text-white font-bold text-lg">{{$match->contest->contest_category}}</h1>
+                    <p class="text-white italic text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "py-3 flex gap-1 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                           </svg>
                           
-                        <p class="text-white font-bold text-base">National University Fairview</p>
-                    </div>
+                          <p class="text-white font-bold text-base">{{$match->location}}</p>
+                        </div>
                 </div>
             </div>
+            @endforeach
             <div class="lg:py-8 py-4 mx-auto text-center">
                 <a href="{{  route('contest')  }}"
                     class="bg-yellow-400 hover:bg-blue-800 text-blue-800 hover:text-white  text-lg text-2xl font-bold py-2 px-6 lg:py-4 lg:px-8 rounded-full">

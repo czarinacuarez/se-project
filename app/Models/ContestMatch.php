@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\Contest;
+use App\Models\CScore;
 
 class ContestMatch extends Model
 {
@@ -24,4 +25,18 @@ class ContestMatch extends Model
     {
         return $this->belongsTo(Contest::class);
     }
+
+
+    public function cmatch_score()
+    {
+        return $this->hasMany(CScore::class, 'cmatch_id');
+    }
+
+    public function program()
+    {
+        return $this->hasManyThrough(Program::class, CScore::class, 'cmatch_id', 'id', 'id', 'program_id');
+    }
+
+    
+
 }

@@ -25,4 +25,14 @@ class SportsMatch extends Model
     {
         return $this->belongsTo(Sports::class);
     }
+
+    public function scores()
+    {
+        return $this->hasMany(Scores::class, 'match_id');
+    }
+
+    public function schools()
+    {
+        return $this->hasManyThrough(School::class, Scores::class, 'match_id', 'id', 'id', 'school_id');
+    }
 }

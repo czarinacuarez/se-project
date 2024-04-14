@@ -58,13 +58,15 @@ class SportsController extends Controller
 
         $match_id = $id;
     
-    
+        
+
         $school_lists = School::all();
 
         $scores = Scores::where('match_id', $match_id)->with('school')->get();
 
+        $match_name = SportsMatch::where('id', $match_id)->value('match_name');
 
-        return view('cruds.sports_scores', ['school_lists' => $school_lists, 'match_id' => $match_id, 'scores' => $scores]);
+        return view('cruds.sports_scores', ['school_lists' => $school_lists, 'match_id' => $match_id, 'match_name' => $match_name, 'scores' => $scores]);
     }
 
 
