@@ -67,8 +67,6 @@
 
         </div>
     </div>
-
-
         <div class = "bg-cover p-5 md:p-10" style="background-image: url('{{ asset('images/greenbackground.png') }}');">
             <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
                 <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">SCHOOL'S SCOREBOARD</h1>
@@ -89,41 +87,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                          
-
                             @foreach($schools as $school)
-
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $school->school_logo )}}" alt="Jese image">
-                                    <div class="ps-3">
-                                        <div class="text-base text-blue-800 font-semibold">{{$school->school_name}}</div>
-                                    </div>
-                                </td>
-                                <td class=" px-3 py-4">
-                                    <div class="flex flex-col items-left">
-                                        <div class="">
-                                            <h1 class="text-xl font-bold">{{$school->points}}</h1>
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $school->school_logo )}}" alt="Jese image">
+                                        <div class="ps-3">
+                                            <div class="text-base text-blue-800 font-semibold">{{$school->school_name}}</div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class=" px-3 py-4">
+                                        <div class="flex flex-col items-left">
+                                            <div class="">
+                                                <h1 class="text-xl font-bold">{{$school->points}}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    
                 </div>
             </div>
-            
             <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
-
-
                 <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PROGRAM'S SCOREBOARD</h1>
                 <p class="text-sm lg:text-base font-normal lg:text-center text-center italic">
                     Updated as of {{ $latestUpdated->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
-
                 </p>
-                
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -155,16 +144,13 @@
                             </tr>
                         </tbody>
                         @endforeach
-
                     </table>
                 </div>
             </div>
         </div>
-
         <div class = "bg-blue-800 p-5 md:p-8 py-7">
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-white font-extrabold ">UNIVERSITY WEEK SPORTS AND
                 CONTEST </h1>
-
             <div class = " max-w-4xl mx-auto py-5 md:py-8">
                 <div x-data="{}" x-init="$nextTick(() => {
                     let ul = $refs.logos;
@@ -245,16 +231,10 @@
                             <img class = "w-16 h-16 mx-auto " src="images\sportscontestlogo\SHELFIE.svg" alt="Facebook" />
                             <p class = "text-white my-2 text-center">Shelfie</p>
                         </li>
-                      
-                      
                     </ul>
                 </div>
             </div>
-
         </div>
-
-
-
         <div class = "p-5 max-w-7xl mx-auto">
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">UPCOMING SPORT MATCHES
             </h1>
