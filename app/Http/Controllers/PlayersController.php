@@ -49,6 +49,8 @@ class PlayersController extends Controller
         $player = Players::find($id);
         $player->name = $request->input('name');
         $player->section = $request->input('section');
+        $player->school_id = $request->input('school_id');
+        $player->sports_id = $request->input('sports_id');
 
         $player->update();
         return redirect()->back()->with('status','Updated Successfully');

@@ -50,6 +50,8 @@ class ParticipantsController extends Controller
         $participants = Participants::find($id);
         $participants->name = $request->input('name');
         $participants->section = $request->input('section');
+        $participants->contest_id = $request->input('contest_id');
+        $participants->program_id = $request->input('program_id');
 
         $participants->update();
         return redirect()->back()->with('status','Updated Successfully');

@@ -443,7 +443,7 @@
                 </svg>
                 <span class="sr-only">Close menu</span>
             </button>
-            <div>
+            <div class="mb-4">
                 <div class="grid grid-cols-2 gap-4 sm:col-span-2">
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-900 dark:text-white">Participants Name</label>
@@ -454,6 +454,43 @@
                         <input type="text" name="section" id="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ $lists->section }}" placeholder="Type product name" required="">
                     </div>     
                 </div>
+            </div>
+            <div class="mb-4">
+                <div class="flex gap-2">
+                    <label for="contest_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest</label>
+                    <button type="button" id="createSportsModal" data-modal-target="contestModal" data-modal-toggle="contestModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <svg class="h-5 w-5 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                    </button>
+                </div>
+        
+                <select id="contest_id" name="contest_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    @forelse ($contest_lists as $contest)
+                        <option class="p-2" value="{{ $contest->id }}"   {{ $contest->id == $lists->contest_id ? 'selected' : '' }} >{{ $contest->contest_category }}</option>
+                    @empty
+
+                    @endforelse
+                    
+                </select>
+            </div>
+            <div class="mb-4">
+                <div class="flex gap-2">
+                    <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
+                    <button type="button" id="createProgramModal" data-modal-target="programModal" data-modal-toggle="programModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        <svg class="h-5 w-5 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                        </svg>
+                    </button>
+                </div>
+                <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    @forelse ($program_lists as $program)
+                        <option class="p-2" value="{{ $program->id }}"  {{ $program->id == $lists->program_id ? 'selected' : '' }}>{{ $program->program_name }}</option>
+                    @empty
+
+                    @endforelse
+                    
+                </select>
             </div>
             <div class="grid grid-cols-2 gap-4 mt-6">
                 <button type="submit" class="bg-blue-500 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Update</button>
