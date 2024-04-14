@@ -103,7 +103,7 @@
                                 <td class=" px-3 py-4">
                                     <div class="flex flex-col items-left">
                                         <div class="">
-                                            <h1 class="text-xl font-bold">3</h1>
+                                            <h1 class="text-xl font-bold">{{$school->points}}</h1>
                                         </div>
                                     </div>
                                 </td>
@@ -120,7 +120,7 @@
 
                 <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PROGRAM'S SCOREBOARD</h1>
                 <p class="text-sm lg:text-base font-normal lg:text-center text-center italic">
-                    Updated as of {{ $latestUpdatedSchool->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
+                    Updated as of {{ $latestUpdated->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
 
                 </p>
                 
