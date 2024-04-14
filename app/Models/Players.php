@@ -31,4 +31,6 @@ class Players extends Model
     {
         return $this->belongsTo(Sports::class);
     }
+
+    
 }

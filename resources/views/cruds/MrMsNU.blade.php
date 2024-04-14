@@ -238,15 +238,30 @@
                     </div>
                     <select id="placement" name="placement" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         @forelse ($contestant_placement_lists as $placement)
-                            <option class="p-2" value="{{ $placement->id }}" {{ $placement->id == $lists->contestant_id ? 'selected' : '' }}>{{ $placement->placement }}</option>
-                        @empty
-
-                        @endforelse
-                        <option class="p-2" value="Mr NU">Mr NU</option>
-                        <option class="p-2" value="Ms NU">Ms NU</option>
-                        <option class="p-2" value="1st Runner Up">1st Runner Up</option>
-                        <option class="p-2" value="2nd Runner Up">2nd Runner Up</option>
-                        <option class="p-2" value="Top 6">Top 6</option>
+                        <option class="p-2" value="{{ $placement->id }}" {{ $placement->id == $lists->contestant_id ? 'selected' : '' }}>
+                            @if ($placement->placement == 0)
+                                Ms. NU Fairview
+                            @elseif ($placement->placement == 1)
+                                Mr. NU Fairview
+                            @elseif ($placement->placement == 2)
+                                Ms. NU Fairview - 1st Runner Up
+                            @elseif ($placement->placement == 3)
+                                Mr. NU Fairview - 1st Runner Up
+                            @elseif ($placement->placement == 4)
+                                Ms. NU Fairview - 2nd Runner Up
+                            @elseif ($placement->placement == 5)
+                                Mr. NU Fairview - 2nd Runner Up
+                            @endif
+                        </option>
+                    @empty
+                    @endforelse
+                    
+                        <option class="p-2" value="0">Ms. NU Fairview</option>
+                        <option class="p-2" value="1">Mr. NU Fairview</option>
+                        <option class="p-2" value="2">Ms. NU Fairview- 1st Runner Up</option>
+                        <option class="p-2" value="3">Mr. NU Fairview- 1st Runner Up</option>
+                        <option class="p-2" value="4">Ms. NU Fairview- 2nd Runner Up</option>
+                        <option class="p-2" value="5">Mr. NU Fairview- 2nd Runner Up</option>
                     </select>
                 </div>
             </div> 
@@ -572,11 +587,12 @@
                             <label for="placement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Placements</label>
                         </div>
                         <select id="placement" name="placement" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option class="p-2" value="Mr NU">Mr NU</option>
-                            <option class="p-2" value="Ms NU">Ms NU</option>
-                            <option class="p-2" value="1st Runner Up">1st Runner Up</option>
-                            <option class="p-2" value="2nd Runner Up">2nd Runner Up</option>
-                            <option class="p-2" value="Top 6">Top 6</option>
+                            <option class="p-2" value="0">Ms. NU Fairview</option>
+                            <option class="p-2" value="1">Mr. NU Fairview</option>
+                            <option class="p-2" value="2">Ms. NU Fairview- 1st Runner Up</option>
+                            <option class="p-2" value="3">Mr. NU Fairview- 1st Runner Up</option>
+                            <option class="p-2" value="4">Ms. NU Fairview- 2nd Runner Up</option>
+                            <option class="p-2" value="5">Mr. NU Fairview- 2nd Runner Up</option>
                         </select>
                     </div>
                     <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">

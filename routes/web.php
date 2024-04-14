@@ -21,6 +21,8 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\CScoreController;
 use App\Http\Controllers\SportsHomeController;
 use App\Http\Controllers\ContestHomeController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PageantController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -47,17 +49,9 @@ Route::get('/about', function () {
 
 Route::get('/sports', [SportsHomeController::class, 'index'])->name('sports');
 Route::get('/contest', [ContestHomeController::class, 'index'])->name('contest');
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
+Route::get('/msnu', [PageantController::class, 'index'])->name('msnu');
 
-
-Route::get('/gallery', function () {
-    return view('guest.participants');
-})->name('gallery');
-
-
-
-Route::get('/msnu', function () {
-    return view('guest.msnu');
-})->name('msnu');
 
 
 Route::middleware('auth')->group(function () {

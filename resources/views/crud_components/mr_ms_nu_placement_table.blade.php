@@ -8,8 +8,36 @@
                 </div>
             </th>
             <td class="px-4 py-3">
-                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">{{ $lists->placement }}</span>
+                @php
+                    $placementText = '';
+                    switch($lists->placement) {
+                        case 0:
+                            $placementText = 'Ms. NU Fairview';
+                            break;
+                        case 1:
+                            $placementText = 'Mr. NU Fairview';
+                            break;
+                        case 2:
+                            $placementText = 'Ms. NU Fairview - 1st Runner Up';
+                            break;
+                        case 3:
+                            $placementText = 'Mr. NU Fairview - 1st Runner Up';
+                            break;
+                        case 4:
+                            $placementText = 'Ms. NU Fairview - 2nd Runner Up';
+                            break;
+                        case 5:
+                            $placementText = 'Mr. NU Fairview - 2nd Runner Up';
+                            break;
+                        default:
+                            $placementText = '';
+                    }
+                @endphp
+                <span class="bg-primary-100 text-primary-800 text-md font-medium px-2 py-0.5 rounded dark:bg-primary-900 dark:text-primary-300">
+                    {{ $placementText }}
+                </span>
             </td>
+            
             <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div class="flex items-center space-x-4">
                     <button type="button" data-drawer-target="drawer-update-placement-{{ $lists->id }}" data-drawer-show="drawer-update-placement-{{ $lists->id }}" aria-controls="drawer-update-placement-{{ $lists->id }}" class="bg-blue-400 py-2 px-3 flex items-center text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">

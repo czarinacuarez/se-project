@@ -21,4 +21,14 @@ class ContestantPlacement extends Model
     {
         return $this->belongsTo(MrAndMsNU::class);
     }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
 }

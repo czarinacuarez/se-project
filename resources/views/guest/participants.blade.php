@@ -7,7 +7,7 @@
         <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">PARTICIPANT'S GALLERY
         </h1>
 
-        <div
+       <!-- <div
             class=" flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 items-center justify-center p-4 lg:px-4 lg:py-6">
             <div class="w-full md:w-1/2">
                 <form role="search" class="flex items-center">
@@ -193,20 +193,22 @@
                 </div>
             </div>
         </div>
+    -->
 
         <section class="container mx-auto p-10 md:py-12 px-0 md:p-8 md:px-0">
             <section
                 class="p-5 md:p-0 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-10 items-start ">
-                <a data-modal-target="default-modal" data-modal-toggle="default-modal"
+               
+                @foreach($players as $player)
+                <a data-modal-target="modal-{{ $player->id }}" data-modal-toggle="modal-{{ $player->id }}"
                     class="pb-3 bg-white shadow-lg text-center rounded-b-lg transform duration-500 hover:-translate-y-2 cursor-pointer">
-                    <img class = "rounded-t-lg" src="images/samplepic2.JPG" alt="">
-
-                    <h1 class="text-xl font-bold mt-2">Chess</h1>
-                    <p class="mb-2">SAS</p>
+                    <img class="rounded-t-lg" src="{{ asset('storage/profiles/'. $player->profile )}}" alt="">
+                    <h1 class="text-xl font-bold mt-2">{{ $player->sports->sports_category  }}</h1>
+                    <p class="mb-2">{{  $player->school->school_name}}</p>
                 </a>
-
-                <!-- Main modal -->
-                <div id="default-modal" tabindex="-1" aria-hidden="true"
+            
+                <!-- Modal -->
+                <div id="modal-{{ $player->id }}" tabindex="-1" aria-hidden="true"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                     <div class="relative p-4 w-full max-w-2xl max-h-full">
                         <!-- Modal content -->
@@ -215,12 +217,12 @@
                             <div
                                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                    SET - Chess
+                                    {{ $player->school->school_initials  }} - {{ $player->sports->sports_category  }}
                                 </h3>
-
+            
                                 <button type="button"
                                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                    data-modal-hide="default-modal">
+                                    data-modal-hide="modal-{{ $player->id }}">
                                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 14 14">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -231,25 +233,98 @@
                             </div>
                             <!-- Modal body -->
                             <div class="p-4 md:p-6 space-y-2">
-                                <img class = " my-2 rounded-lg" src="images/samplepic2.JPG" alt="">
+                                <img class = " my-2 rounded-lg" src="{{ asset('storage/profiles/'. $player->profile )}}" alt="">
                                 <h1 class = "text-lg font-bold">School & Sports </h1>
                                 <div class = "rounded-lg p-2 border-gray-200 border border-2 flex gap-2 items-center">
-                                <img class = "w-8 h-8" src = "images/uweeklogo.png">
-                                <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
-                                    School of Business and Accountancy - Chess
-                                </p>
+                                    <img class = "w-8 h-8" src = "{{ asset('storage/images/'. $player->school->school_logo )}}">
+                                    <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
+                                        {{  $player->school->school_name}} - {{ $player->sports->sports_category  }}
+                                    </p>
                                 </div>
                                 <h1 class = "text-lg font-bold">Members</h1>
                                 <div class = "rounded-lg p-2 border-gray-200 border border-2">
-                                <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
-                                    Czarina Krisel S. Cuarez, Czarina Krisel S. Cuarez
-                                </p>
+                                    <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
+                                        {{  $player->name}}
+                                    </p>
+                                </div>
+                                <h1 class = "text-lg font-bold">Sections</h1>
+                                <div class = "rounded-lg p-2 border-gray-200 border border-2">
+                                    <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
+                                        {{  $player->section}}
+                                    </p>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
+                 @endforeach
+            
+                 @foreach($participants as $player)
+    <a data-modal-target="modal-participant-{{ $player->id }}" data-modal-toggle="modal-participant-{{ $player->id }}"
+        class="pb-3 bg-white shadow-lg text-center rounded-b-lg transform duration-500 hover:-translate-y-2 cursor-pointer">
+        <img class="rounded-t-lg" src="{{ asset('storage/profiles/'. $player->profile )}}" alt="">
+        <h1 class="text-xl font-bold mt-2">{{ $player->contest->contest_category  }}</h1>
+        <p class="mb-2">{{  $player->program->program_name}}</p>
+    </a>
+    
+    <!-- Modal -->
+    <div id="modal-participant-{{ $player->id }}" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div
+                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        {{ $player->program->program_initials  }} - {{ $player->contest->contest_category  }}
+                    </h3>
+    
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        data-modal-hide="modal-participant-{{ $player->id }}">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-6 space-y-2">
+                    <img class = " my-2 rounded-lg" src="{{ asset('storage/profiles/'. $player->profile )}}" alt="">
+                    <h1 class = "text-lg font-bold">Contest & Program </h1>
+                    <div class = "rounded-lg p-2 border-gray-200 border border-2 flex gap-2 items-center">
+                        <img class = "w-8 h-8" src = "{{ asset('storage/images/'. $player->school->school_logo )}}">
+                        <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
+                            {{  $player->program->program_name}} - {{ $player->contest->contest_category  }}
+                        </p>
+                    </div>
+                    <h1 class = "text-lg font-bold">Members</h1>
+                    <div class = "rounded-lg p-2 border-gray-200 border border-2">
+                        <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
+                            {{  $player->name}}
+                        </p>
+                    </div>
+                    <h1 class = "text-lg font-bold">Sections</h1>
+                    <div class = "rounded-lg p-2 border-gray-200 border border-2">
+                        <p class="text-base leading-relaxed text-black text-gray-500 dark:text-gray-400">
+                            {{  $player->section}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+
+
+                
+
+              
             </section>
+            
         </section>
     </div>
 
