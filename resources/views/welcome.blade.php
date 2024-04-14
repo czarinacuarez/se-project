@@ -424,21 +424,22 @@
                 <div class = "col-span-1 flex items-center justify-center ">
                     <img class = "w-28 h-28 md:w-40 md:h-40" src = "
                     @if($match->contest_id == 1)
-                    images\sportcontestlogo\BASKETBALL.svg
+                    images\sportscontestlogo\BATTLE OF THE BANDS.svg                   
                     @elseif($match->contest_id == 2)
-                    images\sportcontestlogo\BASKETBALL.svg
-                    @elseif($match->contest_id == 3)
-                    images\sportcontestlogo\BOWLING.svg
+                    images\sportscontestlogo\PET FASHION SHOW.svg                   
+                     @elseif($match->contest_id == 3)
+                    images\sportcontestlogo\BATTLE OF THE BRAINS.svg
                     @elseif($match->contest_id == 4)
-                    images\sportcontestlogo\VOLLEYBALL.svg
+                    images\sportcontestlogo\DANCE CONTEST.svg
                     @elseif($match->contest_id == 5)
-                    images\sportcontestlogo\VOLLEYBALL.svg
+                    images\sportcontestlogo\POSTER MAKING CONTEST.svg
                     @elseif($match->contest_id == 6)
-                    images\sportcontestlogo\TABLE TENNIS.svg
+                    images\sportcontestlogo\PEERLYMPICS.svg
                     @elseif($match->contest_id == 7)
-                    images\sportcontestlogo\ESPORTS COD.svg
+                    images\sportcontestlogo\SHELFIE.svg
                     @elseif($match->contest_id == 8)
-                    images\sportcontestlogo\ESPORTS ML.svg
+                    images\sportcontestlogo\DEBATE.svg
+
                     @endif
                     ">
                 </div>
