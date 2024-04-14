@@ -19,6 +19,8 @@ use App\Http\Controllers\SpecialAwardsController;
 use App\Http\Controllers\ScoresController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\CScoreController;
+use App\Http\Controllers\SportsHomeController;
+use App\Http\Controllers\ContestHomeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -41,19 +43,17 @@ Route::get('/about', function () {
     return view('guest.about');
 })->name('about');
 
-Route::get('/sports', function () {
-    return view('guest.sports');
-})->name('sports');
 
+
+Route::get('/sports', [SportsHomeController::class, 'index'])->name('sports');
+Route::get('/contest', [ContestHomeController::class, 'index'])->name('contest');
 
 
 Route::get('/gallery', function () {
     return view('guest.participants');
 })->name('gallery');
 
-Route::get('/contest', function () {
-    return view('guest.contest');
-})->name('contest');
+
 
 Route::get('/msnu', function () {
     return view('guest.msnu');

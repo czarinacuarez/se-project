@@ -62,117 +62,90 @@
         
         <div id="bands" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">BATTLE OF THE BANDS</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 1)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
 
+       
         <div id="pet" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PET FASHION SHOW</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 2)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -180,58 +153,44 @@
 
         <div id="brains" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">BATTLE OF THE BRAINS</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 3)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -239,298 +198,228 @@
 
         <div id="dance" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">DANCE CONTEST</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div id="poster" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
-            <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">POSTER MAKING</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 4)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
 
+        <div id="poster" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
+            <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">POSTER MAKING CONTEST</h1>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 5)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
         <div id="peerlympics" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PEERLYMPICS</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 6)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="shelfie" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
+            <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">SHELFIE</h1>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 7)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <div id="shelfie" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
-            <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">SHELFIE</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
         <div id="debate" class="max-w-4xl shadow-lg p-5 my-5 mx-auto bg-white rounded-lg">
             <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">DEBATE</h1>
-            <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-            </p>
+            <p class="text-base lg:text-lg lg:text-center italic text-center lg:pe-10 py-2"></p>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm mx-auto rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="text-left px-3 py-4">
-                                MATCH
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                TEAM
-                            </th>
-                            <th scope="col" class="text-left px-3 py-4">
-                                SCORE
-                            </th>
+                            <th scope="col" class="text-left px-3 py-4">MATCH</th>
+                            <th scope="col" class="text-left px-3 py-4">TEAM</th>
+                            <th scope="col" class="text-left px-3 py-4">SCORE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-3 py-4">Bracket 1</td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="text-base text-blue-800 font-semibold">BSIT</div>
-                                </div>
-                            </td>
-                            <td class="px-3 py-4">
-                                <div class="flex flex-col items-start">
-                                    <div class="mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5 mb-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                    <div class="mt-5">
-                                        <h1 class="text-xl font-bold">3</h1>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($recentMatches as $match)
+                        @if($match->contest_id == 1)
+                            <!-- Loop through scores related to this match -->
+                            @foreach($match->scores as $index => $score)
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    @if($index === 0)
+                                    <td rowspan="{{ count($match->scores) }}" class="px-3 py-4">{{ $match->match_name }}</td>
+                                    @endif
+                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $score->program->school->school_logo )}}" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-base  text-blue-800 md:hidden font-semibold">{{ $score->program->program_initials }}</div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">{{ $score->program->program_name }}</div>
+                                        </div>
+                                    </td>
+                                    <!-- Display the score for each team -->
+                                    <td class="px-3 py-4">
+                                        <div class="flex flex-col items-start">
+                                            <div class="mb-5">
+                                                <h1 class="text-xl font-bold @if($score->scores > 0 && $score->scores == $match->scores->max('scores')) text-green-600 @endif">{{ $score->scores }}</h1>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+      
 
     </div>
 
@@ -538,41 +427,46 @@
         <div class = "p-5 max-w-7xl mx-auto ">
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">UPCOMING CONTEST MATCHES
             </h1>
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-blue-800 grid grid-cols-3">
+            
+            @foreach($recentMatches as $match)
+
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-green-600 grid grid-cols-2">
                 <div class = "col-span-1 flex items-center justify-center ">
-                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
+                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "
+                    @if($match->contest_id == 1)
+                    images\sportscontestlogo\BATTLE OF THE BANDS.svg                   
+                    @elseif($match->contest_id == 2)
+                    images\sportscontestlogo\PET FASHION SHOW.svg                   
+                     @elseif($match->contest_id == 3)
+                    images\sportscontestlogo\BATTLE OF THE BRAINS.svg
+                    @elseif($match->contest_id == 4)
+                    images\sportscontestlogo\DANCE CONTEST.svg
+                    @elseif($match->contest_id == 5)
+                    images\sportscontestlogo\POSTER MAKING CONTEST.svg
+                    @elseif($match->contest_id == 6)
+                    images\sportscontestlogo\PEERLYMPICS.svg
+                    @elseif($match->contest_id == 7)
+                    images\sportscontestlogo\SHELFIE.svg
+                    @elseif($match->contest_id == 8)
+                    images\sportscontestlogo\DEBATE.svg
+
+                    @endif
+                    ">
                 </div>
-                <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg">BATTLE OF THE BANDS</h1>
-                    <p class="text-white italic text-sm">March 08, 2023</p>
+                <div class = "col-span-1 flex items-start justify-center flex-col">
+                    <h1 class="text-white font-bold text-lg">[{{ $match->match_name}}] {{$match->contest->contest_category}}</h1>
+                    <p class="text-white italic text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "py-3 flex gap-1 text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                           </svg>
                           
-                        <p class="text-white font-bold text-base">National University Fairview</p>
-                    </div>
+                          <p class="text-white font-bold text-base">{{$match->location}}</p>
+                        </div>
                 </div>
             </div>
-
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-blue-800 grid grid-cols-3">
-                <div class = "col-span-1 flex items-center justify-center ">
-                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
-                </div>
-                <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg">BATTLE OF THE BANDS</h1>
-                    <p class="text-white italic text-sm">March 08, 2023</p>
-
-                    <div class = "py-3 flex gap-1 text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                            <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
-                          </svg>
-                          
-                        <p class="text-white font-bold text-base">National University Fairview</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

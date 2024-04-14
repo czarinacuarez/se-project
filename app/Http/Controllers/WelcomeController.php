@@ -5,6 +5,7 @@ use App\Models\Program;
 use App\Models\School;
 use App\Models\SportsMatch;
 use App\Models\Scores;
+use App\Models\Events;
 use App\Models\ContestMatch;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -27,6 +28,7 @@ class WelcomeController extends Controller
         $threeDaysAfter = $today->copy()->addDays(3);
 
         $recentMatches = SportsMatch::whereDate('date', '>=', $today)
+        ->orderBy('date', 'asc')
         ->whereDate('date', '<=', $threeDaysAfter)
         ->with(['schools', 'scores','sports'])
         ->get();
@@ -34,11 +36,14 @@ class WelcomeController extends Controller
 
         $recentContestMatches = ContestMatch::whereDate('date', '>=', $today)
         ->whereDate('date', '<=', $threeDaysAfter)
+        ->orderBy('date', 'asc')
         ->with(['program', 'cmatch_score','contest'])
         ->get();
 
+        $events = Events::orderBy('date', 'asc')->get();
 
-        return view('welcome',  compact(['programs' , 'recentMatches',  'latestUpdated', 'recentContestMatches', 'latestUpdatedSchool','schools']));
+
+        return view('welcome',  compact(['events','programs' , 'recentMatches',  'latestUpdated', 'recentContestMatches', 'latestUpdatedSchool','schools']));
 
     }
 

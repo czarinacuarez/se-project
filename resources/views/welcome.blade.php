@@ -271,8 +271,8 @@
             @if ($scoresCount == 2)
 
 
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl  my-4  grid grid-cols-4">
-                <div class = " col-span-2  flex rounded-l-xl items-center justify-center
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl  my-4    grid grid-cols-6">
+                <div class = " col-span-3  flex rounded-l-xl items-center justify-center
                 @if ($match->sports_id == 1 || $match->sports_id == 5)
                 bg-blue-200
                 @elseif ($match->sports_id == 2  || $match->sports_id == 6)
@@ -293,20 +293,22 @@
                         <?php $matchs = 0; ?>
 
                         @foreach ($match->scores as $index => $score)
-                            <div class="w-20 h-20 md:w-28 md:h-28">
+                            <div class="w-20 h-20 md:w-28 md:h-28 py-4 px-2">
                                 <img class="w-full h-full" src="{{ asset('storage/images/'. $score->school->school_logo ) }}">
                             </div>
                             <?php
                                 if ($matchs == 0) {
-                                    echo '<h1 class="text-center text-sm text-gray-600 col-span-2">March 20, 2023</h1>';
-                                }
+                                    ?>
+                                    <h1 class="text-center text-xs md:text-sm text-gray-600 ">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</h1>
+                                    <?php }
+                                
                                 $matchs += 1;
                             ?>
                         @endforeach
                    
 
                 </div>
-                <div class = " col-span-2  border border-4 p-4  rounded-r-xl flex items-center justify-center flex-col
+                <div class = " col-span-3  border border-4 p-4  rounded-r-xl flex items-center justify-center flex-col
                 @if ($match->sports_id == 1  || $match->sports_id == 5)
                 border-blue-200
                 @elseif ($match->sports_id == 2  || $match->sports_id == 6)
@@ -325,7 +327,7 @@
 
                 @endif">
                     <h1 class=" font-bold  text-gray-600 text-lg text-center uppercase">{{$match->sports->sports_category}}</h1>
-                    <p class="italic text-gray-600 text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
+                    <p class="italic text-gray-600 text-sm">{{$match->match_name}}</p>
 
                     <div class = "justify-center items-center flex"> 
                         <div class = "py-3 flex gap-1 ">
@@ -341,7 +343,7 @@
             </div>
 
             @elseif ($scoresCount !=0)
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 grid grid-cols-3
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 grid grid-cols-2
             @if ($match->sports_id == 1 || $match->sports_id == 5)
                 bg-blue-600
                 @elseif ($match->sports_id == 2  || $match->sports_id == 6)
@@ -362,32 +364,32 @@
                 <div class = "col-span-1 flex items-center justify-center ">
                     <img class = "w-28 h-28 md:w-40 md:h-40" src = "
                     @if($match->sports_id == 1)
-                    images\sportcontestlogo\BASKETBALL.svg
+                    images\sportscontestlogo\BASKETBALL.svg                   
                     @elseif($match->sports_id == 2)
-                    images\sportcontestlogo\BASKETBALL.svg
+                    images\sportscontestlogo\BASKETBALL.svg
                     @elseif($match->sports_id == 3)
-                    images\sportcontestlogo\BOWLING.svg
+                    images\sportscontestlogo\BOWLING.svg
                     @elseif($match->sports_id == 4)
-                    images\sportcontestlogo\VOLLEYBALL.svg
+                    images\sportscontestlogo\VOLLEYBALL.svg
                     @elseif($match->sports_id == 5)
-                    images\sportcontestlogo\VOLLEYBALL.svg
+                    images\sportscontestlogo\VOLLEYBALL.svg
                     @elseif($match->sports_id == 6)
-                    images\sportcontestlogo\TABLE TENNIS.svg
+                    images\sportscontestlogo\TABLE TENNIS.svg
                     @elseif($match->sports_id == 7)
-                    images\sportcontestlogo\ESPORTS COD.svg
+                    images\sportscontestlogo\ESPORTS COD.svg
                     @elseif($match->sports_id == 8)
-                    images\sportcontestlogo\ESPORTS ML.svg
+                    images\sportscontestlogo\ESPORTS ML.svg
                     @elseif($match->sports_id == 9)
-                    images\sportcontestlogo\ESPORTS COD.svg
+                    images\sportscontestlogo\ESPORTS COD.svg
                     @elseif($match->sports_id == 10)
                     images\sportscontestlogo\CHESS.svg                   
                      @elseif($match->sports_id == 11)
-                    images\sportcontestlogo\RUBIKS CUBE.svg
+                    images\sportscontestlogo\RUBIKS CUBE.svg
                     @endif
                     ">
                 </div>
-                <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg uppercase">{{$match->sports->sports_category}}</h1>
+                <div class = "col-span-1 flex items-start justify-center flex-col">
+                    <h1 class="text-white font-bold text-lg uppercase">[{{ $match->match_name}}] {{$match->sports->sports_category}}</h1>
                     <p class="text-white italic text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "py-3 flex gap-1 text-white">
@@ -420,7 +422,7 @@
 
             @foreach($recentContestMatches as $match)
 
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-green-600 grid grid-cols-3">
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-green-600 grid grid-cols-2">
                 <div class = "col-span-1 flex items-center justify-center ">
                     <img class = "w-28 h-28 md:w-40 md:h-40" src = "
                     @if($match->contest_id == 1)
@@ -428,23 +430,23 @@
                     @elseif($match->contest_id == 2)
                     images\sportscontestlogo\PET FASHION SHOW.svg                   
                      @elseif($match->contest_id == 3)
-                    images\sportcontestlogo\BATTLE OF THE BRAINS.svg
+                    images\sportscontestlogo\BATTLE OF THE BRAINS.svg
                     @elseif($match->contest_id == 4)
-                    images\sportcontestlogo\DANCE CONTEST.svg
+                    images\sportscontestlogo\DANCE CONTEST.svg
                     @elseif($match->contest_id == 5)
-                    images\sportcontestlogo\POSTER MAKING CONTEST.svg
+                    images\sportscontestlogo\POSTER MAKING CONTEST.svg
                     @elseif($match->contest_id == 6)
-                    images\sportcontestlogo\PEERLYMPICS.svg
+                    images\sportscontestlogo\PEERLYMPICS.svg
                     @elseif($match->contest_id == 7)
-                    images\sportcontestlogo\SHELFIE.svg
+                    images\sportscontestlogo\SHELFIE.svg
                     @elseif($match->contest_id == 8)
-                    images\sportcontestlogo\DEBATE.svg
+                    images\sportscontestlogo\DEBATE.svg
 
                     @endif
                     ">
                 </div>
-                <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class="text-white font-bold text-lg">{{$match->contest->contest_category}}</h1>
+                <div class = "col-span-1 flex items-start justify-center flex-col">
+                    <h1 class="text-white font-bold text-lg">[{{ $match->match_name}}] {{$match->contest->contest_category}}</h1>
                     <p class="text-white italic text-sm">{{ \Carbon\Carbon::parse($match->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "py-3 flex gap-1 text-white">
@@ -469,23 +471,26 @@
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800  font-extrabold ">UPCOMING EVENTS
             </h1>
 
-            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-orange-100 grid grid-cols-3">
+            @foreach($events as $event)
+
+            <div class = "md:max-w-xl max-w-md mx-auto rounded-xl p-3 my-4 bg-orange-100 grid grid-cols-2">
                 <div class = "col-span-1 flex items-center justify-center ">
-                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "images/SBAlogo.png">
+                    <img class = "w-28 h-28 md:w-40 md:h-40" src = "{{ asset('storage/images/'. $event->logo )}}">
                 </div>
-                <div class = "col-span-2 flex items-center justify-center flex-col">
-                    <h1 class=" font-bold text-lg">BATTLE OF THE BANDS</h1>
-                    <p class="italic text-sm">March 08, 2023</p>
+                <div class = "col-span-1 flex items-start justify-center flex-col">
+                    <h1 class=" font-bold text-gray-600  text-lg">{{$event->name}}</h1>
+                    <p class="text-gray-600  italic text-sm">{{ \Carbon\Carbon::parse($event->date)->format('F j, Y h:ia') }}</p>
 
                     <div class = "py-3 flex gap-1 ">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                             <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
                           </svg>
                           
-                        <p class=" font-bold text-base">National University Fairview</p>
+                          <p class="text-gray-600 font-bold text-base">{{$event->location}}</p>
                     </div>
                 </div>
             </div>
+            @endforeach
 
         </div>
 </x-guest-layout>
