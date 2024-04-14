@@ -97,7 +97,7 @@ Route::middleware('auth')->group(function () {
     Route::get('sports/scores/{id}', [SportsController::class, 'scores'])->name('sports.scores');
 
 });
-
+ 
 // crud route
 Route::middleware('auth')->group(function () {
     // School Controller
