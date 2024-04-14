@@ -28,9 +28,9 @@
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="p-4">School</th>
+                                    <th scope="col" class="p-4">Program</th>
                                     <th scope="col" class="p-4">Scores</th>
                                     <th scope="col" class="p-4">Actions</th>
-
                                 </tr>
                             </thead>
                                 <tbody>
@@ -52,7 +52,7 @@
             <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
                 <!-- Modal header -->
                 <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Teams</h3>
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Add Programs</h3>
                     <button type="button"  class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="scoresModal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -67,7 +67,7 @@
                     <input type="hidden" name="cmatch_id" value="{{ $match_id }}">
                     <div class="mb-4">
                         <div class="flex gap-2">
-                            <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Teams</label>
+                            <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
                         </div>
                         <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             @forelse ($program_lists as $lists)
@@ -98,18 +98,18 @@
     </div>
 
     @forelse($cscores as $lists)
-        <form method="POST" action="{{ url('update_scores', ['id' => $lists->id]) }}" enctype="multipart/form-data" id="drawer-update-match-{{ $lists->id}}" class="fixed top-0 left-0 z-40 w-full h-screen max-w-xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-match-label" aria-hidden="true">
+        <form method="POST" action="{{ url('update_cscores', ['id' => $lists->id]) }}" enctype="multipart/form-data" id="drawer-update-cscore-{{ $lists->id}}" class="fixed top-0 left-0 z-40 w-full h-screen max-w-xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-cscore-label" aria-hidden="true">
             @csrf
             @method('PUT')
 
-            <h5 id="drawer-label" class="inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Update Sports Awards</h5>
-            <button type="button" data-drawer-dismiss="drawer-update-match-{{ $lists->id}}" aria-controls="drawer-update-match-{{ $lists->id}}" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+            <h5 id="drawer-label" class="inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Update Programs</h5>
+            <button type="button" data-drawer-dismiss="drawer-update-cscore-{{ $lists->id}}" aria-controls="drawer-update-cscore-{{ $lists->id}}" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
                 <span class="sr-only">Close menu</span>
             </button>
-            <input type="hidden" name="match_id" value="{{ $match_id }}">
+            <input type="hidden" name="cmatch_id" value="{{ $match_id }}">
             <div class="mb-4">
                 <div>
                     <label for="scores" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Scores</label>
@@ -118,11 +118,12 @@
             </div>
             <div class="mb-4">
                 <div class="flex gap-2">
-                    <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program Teams</label>
+                    <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
                 </div>
+                
                 <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($program_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}"> {{$lists->program_name }}</option>
+                    @forelse ($program_lists as $program)
+                        <option class="p-2" value="{{ $program->id }}" {{ $program->id == $lists->program_id ? 'selected' : '' }}> {{ $program->program_name }}</option>
                     @empty
 
                     @endforelse
@@ -158,7 +159,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
-                        <form method="POST" action="{{ url('delete_scores', ['id' => $lists->id]) }}">
+                        <form method="POST" action="{{ url('delete_cscores', ['id' => $lists->id]) }}">
                             @csrf
                             @method('DELETE')
                             <button data-modal-toggle="delete-modal-{{ $lists->id }}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">Yes, I'm sure</button>

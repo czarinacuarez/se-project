@@ -67,5 +67,4 @@ class ScoresController extends Controller
 
         return view('cruds.contest_scores', ['match_name' => $match_name, 'program_lists' => $program_lists, 'match_id' => $match_id, 'cscores' => $cscores]);
     }
-
 }

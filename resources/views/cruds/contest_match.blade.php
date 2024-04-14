@@ -376,8 +376,8 @@
                     <label for="contest_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contest Category</label>
                 </div>
                 <select id="contest_id" name="contest_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($contest_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}">{{ $lists->contest_category }}</option>
+                    @forelse ($contest_lists as $contest)
+                        <option class="p-2" value="{{ $contest->id }}" {{ $contest->id == $lists->contest_id ? 'selected' : '' }}>{{ $contest->contest_category }}</option>
                     @empty
 
                     @endforelse
@@ -388,8 +388,8 @@
                     <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
                 </div>
                 <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($program_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}">{{ $lists->program_name }}</option>
+                    @forelse ($program_lists as $program)
+                        <option class="p-2" value="{{ $program->id }}" {{ $program->id == $lists->program_id ? 'selected' : '' }}>{{ $program->program_name }}</option>
                     @empty
 
                     @endforelse
@@ -400,9 +400,14 @@
                     <label for="championship" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Championship</label>
                 </div>
                 <select id="championship" name="championship" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        <option value="Champion">Champion</option>
-                        <option value="1st Place">1st Place</option>         
-                        <option value="2nd Place">2nd Place</option>         
+                    @forelse ($contest_awards_lists as $awards)
+                        <option class="p-2" value="{{ $awards->id }}" {{ $awards->id == $lists->id ? 'selected' : '' }}>{{ $awards->championship }}</option>
+                    @empty
+
+                    @endforelse
+                    <option value="Champion">Champion</option>
+                    <option value="1st Place">1st Place</option>         
+                    <option value="2nd Place">2nd Place</option>         
                 </select>
             </div>  
             <div class="grid grid-cols-2 gap-4 mt-6">
@@ -459,8 +464,8 @@
                     </button>
                 </div>
                 <select id="contest_id" name="contest_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($contest_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}" {{ $lists->id == $lists->id ? 'selected' : '' }}>{{ $lists->contest_category }}</option>
+                    @forelse ($contest_lists as $contest)
+                        <option class="p-2" value="{{ $contest->id }}" {{ $contest->id == $lists->contest_id ? 'selected' : '' }}>{{ $contest->contest_category }}</option>
                     @empty
 
                     @endforelse
