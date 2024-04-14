@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sports_id')->constrained('sports');
             $table->string('match_name');
-            $table->date('date');
+            $table->datetime('date');
             $table->string('location');
             $table->timestamps();
         });

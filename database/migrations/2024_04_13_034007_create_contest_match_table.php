@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('contest_id')->constrained('contest');
             $table->string('match_name');
-            $table->date('date');
+            $table->datetime('date');
             $table->string('location');
             $table->timestamps();
         });

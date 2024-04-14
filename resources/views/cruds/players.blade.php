@@ -64,7 +64,6 @@
                                     <th scope="col" class="p-4">section</th>
                                     <th scope="col" class="p-4">School</th>
                                     <th scope="col" class="p-4">Sports Category</th>
-                                    <th scope="col" class="p-4">Program</th>
                                     <th scope="col" class="p-4">Action</th>
                                 </tr>
                             </thead>
@@ -139,24 +138,7 @@
                             </select>
                         </div>
                     </div>
-                    {{-- <div class="mb-4">
-                        <div class="flex gap-2">
-                            <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
-                            <button type="button" id="createProgramModal" data-modal-target="programModal" data-modal-toggle="programModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                <svg class="h-5 w-5 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            @forelse ($program_lists as $lists)
-                                <option class="p-2" value="{{ $lists->id }}">{{ $lists->program_name }}</option>
-                            @empty
-
-                            @endforelse
-                            
-                        </select>
-                    </div> --}}
+                   
                     <div class="mb-4">
                         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profile</span>
                         <div class="flex justify-center items-center w-full">
@@ -189,7 +171,6 @@
     </div>
     @include('modal_form.add_school')
     @include('modal_form.add_sports')
-    @include('modal_form.add_program')
     <!-- drawer component -->
     @forelse ($player_lists as $lists)
         <form method="POST" action="{{ url('update_player', ['id' => $lists->id ]) }}" enctype="multipart/form-data" id="drawer-update-product-{{ $lists->id }}" class="fixed top-0 left-0 z-40 w-full h-screen max-w-xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-product-label" aria-hidden="true">
