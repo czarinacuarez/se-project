@@ -95,12 +95,12 @@
                     @csrf
                     <div class="grid gap-4 mb-4 sm:grid-cols-2">
                         <div>
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Members</label>
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
                         </div>
                         <div>
-                            <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section</label>
-                            <input type="text" name="section" id="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Product brand" required="">
+                            <label for="section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">All Section</label>
+                            <input type="text" name="section" id="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="" required="">
                         </div>
                         <div>
                             <div class="flex gap-2">
@@ -123,11 +123,11 @@
                         <div>
                             <div class="flex gap-2">
                                 <label for="sports_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sports</label>
-                                <button type="button" id="createSportsModal" data-modal-target="sportModal" data-modal-toggle="sportModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                {{-- <button type="button" id="createSportsModal" data-modal-target="sportModal" data-modal-toggle="sportModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                     <svg class="h-5 w-5 text-gray-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                                     </svg>
-                                </button>
+                                </button> --}}
                             </div>
                             <select id="sports_id" name="sports_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 @forelse ($sport_lists as $lists)
@@ -139,7 +139,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="mb-4">
+                    {{-- <div class="mb-4">
                         <div class="flex gap-2">
                             <label for="program_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Program</label>
                             <button type="button" id="createProgramModal" data-modal-target="programModal" data-modal-toggle="programModal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -156,7 +156,7 @@
                             @endforelse
                             
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="mb-4">
                         <span class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profile</span>
                         <div class="flex justify-center items-center w-full">

@@ -73,7 +73,8 @@
             <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
                 <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">SCHOOL'S SCOREBOARD</h1>
                 <p class = " text-sm lg:text-base lg:text-center text-center italic font-normal ">
-                    Updated as of {{ $latestUpdatedSchool->first()->updated_at->format('F j, Y h:ia') }}
+                    Updated as of {{ $latestUpdatedSchool->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
+
                 </p>
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -119,7 +120,8 @@
 
                 <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PROGRAM'S SCOREBOARD</h1>
                 <p class="text-sm lg:text-base font-normal lg:text-center text-center italic">
-                    Updated as of {{ $latestUpdated->first()->updated_at->format('F j, Y h:ia') }}
+                    Updated as of {{ $latestUpdatedSchool->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
+
                 </p>
                 
                 <div class="overflow-x-auto">
