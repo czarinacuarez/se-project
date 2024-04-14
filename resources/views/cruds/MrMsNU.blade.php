@@ -166,8 +166,8 @@
                         </button>
                     </div>
                     <select id="program_id" name="program_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        @forelse ($program_lists as $lists)
-                            <option class="p-2" value="{{ $lists->id }}">{{ $lists->program_name }}</option>
+                        @forelse ($program_lists as $program)
+                            <option class="p-2" value="{{ $program->id }}" {{ $program->id == $lists->program_id ? 'selected' : '' }}>{{ $program->program_name }}</option>
                         @empty
     
                         @endforelse
@@ -224,8 +224,8 @@
                         <label for="contestant_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                     </div>
                     <select id="contestant_id" name="contestant_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        @forelse ($contestant_lists as $lists)
-                            <option class="p-2" value="{{ $lists->id }}">{{ $lists->name }}</option>
+                        @forelse ($contestant_lists as $contestant)
+                            <option class="p-2" value="{{ $contestant->id }}" {{ $contestant->id == $lists->contestant_id ? 'selected' : '' }}>{{ $contestant->name }}</option>
                         @empty
 
                         @endforelse
@@ -237,6 +237,11 @@
                         <label for="placement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Placements</label>
                     </div>
                     <select id="placement" name="placement" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        @forelse ($contestant_placement_lists as $placement)
+                            <option class="p-2" value="{{ $placement->id }}" {{ $placement->id == $lists->contestant_id ? 'selected' : '' }}>{{ $placement->placement }}</option>
+                        @empty
+
+                        @endforelse
                         <option class="p-2" value="Mr NU">Mr NU</option>
                         <option class="p-2" value="Ms NU">Ms NU</option>
                         <option class="p-2" value="1st Runner Up">1st Runner Up</option>
@@ -281,8 +286,8 @@
                         <label for="contestant_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                     </div>
                     <select id="contestant_id" name="contestant_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        @forelse ($contestant_lists as $lists)
-                            <option class="p-2" value="{{ $lists->id }}">{{ $lists->name }}</option>
+                        @forelse ($contestant_lists as $contestant)
+                            <option class="p-2" value="{{ $contestant->id }}" {{ $contestant->id == $lists->contestant_id ? 'selected' : '' }}>{{ $contestant->name }}</option>
                         @empty
 
                         @endforelse

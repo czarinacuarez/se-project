@@ -118,8 +118,8 @@
                     </button>
                 </div>
                 <select id="sports_id" name="sports_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($sport_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}"> {{$lists->sports_category }}</option>
+                    @forelse ($sport_lists as $sport)
+                        <option class="p-2" value="{{ $sport->id }}"  {{ $lists->sports_id == $sport->id ? 'selected' : '' }}> {{ $sport->sports_category }}</option>
                     @empty
 
                     @endforelse
@@ -143,7 +143,7 @@
         <form method="POST" action="{{ url('update_sports_awards', ['id' => $lists->id]) }}" enctype="multipart/form-data" id="drawer-update-awards-{{ $lists->id}}" class="fixed top-0 left-0 z-40 w-full h-screen max-w-xl p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-update-awards-label" aria-hidden="true">
             @csrf
             @method('PUT')
-
+ 
             <h5 id="drawer-label" class="inline-flex items-center mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Update Sports Awards</h5>
             <button type="button" data-drawer-dismiss="drawer-update-awards-{{ $lists->id}}" aria-controls="drawer-update-awards-{{ $lists->id}}" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -162,8 +162,8 @@
                         </button>
                     </div>
                     <select id="school_id" name="school_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        @forelse ($school_lists as $lists)
-                            <option class="p-2" value="{{ $lists->id }}" {{ $lists->id == $lists->id ? 'selected' : '' }}>{{ $lists->school_name }}</option>
+                        @forelse ($school_lists as $school)
+                            <option class="p-2" value="{{ $school->id }}" {{ $school->id == $lists->school_id ? 'selected' : '' }}>{{ $school->school_name }}</option>
                         @empty
 
                         @endforelse
@@ -178,8 +178,8 @@
                     </button>
                 </div>
                 <select id="sports_id" name="sports_id" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @forelse ($sport_lists as $lists)
-                        <option class="p-2" value="{{ $lists->id }}" {{ $lists->id == $lists->id ? 'selected' : '' }}> {{$lists->sports_category }}</option>
+                    @forelse ($sport_lists as $sport)
+                        <option class="p-2" value="{{ $sport->id }}" {{ $sport->id == $lists->sports_id ? 'selected' : '' }}> {{$sport->sports_category }}</option>
                     @empty
 
                     @endforelse
@@ -190,9 +190,14 @@
                     <label for="championship" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Championship</label>
                 </div>
                 <select id="championship" name="championship" class="p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    <option class="" value="Champion">Champion</option>
-                        <option class="" value="1st Place">1st Place</option>         
-                        <option class="" value="2nd Place">2nd Place</option>    
+                    @forelse ($sports_awards_lists as $awards)
+                        <option class="p-2" value="{{ $awards->id }}" {{ $awards->id == $lists->id ? 'selected' : '' }}>{{ $awards->championship }}</option>
+                    @empty
+
+                    @endforelse  
+                    <option class="Champion" value="Champion">Champion</option>
+                    <option class="1st Place" value="1st Place">1st Place</option>         
+                    <option class="2nd Place" value="2nd Place">2nd Place</option>  
                 </select>
             </div>
             <div class="grid grid-cols-2 gap-4 mt-6">
