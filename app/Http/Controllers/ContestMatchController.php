@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ContestMatch;
-use Carbon\Carbon;
 
 class ContestMatchController extends Controller
 {
@@ -14,7 +13,7 @@ class ContestMatchController extends Controller
                 'contest_id' => ['required'],
                 'match_name' => ['required'],
                 'location' => ['required'],
-                'date' => ['required', 'date_format:Y-m-d'],
+                'date' => ['required'],
             ]);
     
             $contest_match = ContestMatch::create([
@@ -38,8 +37,7 @@ class ContestMatchController extends Controller
         $contest_match->contest_id = $request->input('contest_id');
         $contest_match->match_name = $request->input('match_name');
         $contest_match->location = $request->input('location');
-        $formattedDate = Carbon::createFromFormat('Y-m-d', $request->input('date'))->toDateString();
-        $contest_match->date = $formattedDate; 
+        $contest_match->date = $request->input('date');; 
 
         $contest_match->update();
 

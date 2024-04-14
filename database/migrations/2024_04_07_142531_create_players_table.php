@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('school_id')->constrained('school');
             $table->foreignId('sports_id')->constrained('sports');
-            $table->foreignId('program_id')->constrained('program');
             $table->string('name');
             $table->string('profile');
             $table->string('section');

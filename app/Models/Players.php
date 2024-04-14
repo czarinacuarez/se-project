@@ -17,7 +17,6 @@ class Players extends Model
     protected $fillable = [
         'school_id',
         'sports_id',
-        'program_id',
         'name',
         'profile',
         'section',
@@ -31,10 +30,5 @@ class Players extends Model
     public function sports(): BelongsTo
     {
         return $this->belongsTo(Sports::class);
-    }
-
-    public function program(): BelongsTo
-    {
-        return $this->belongsTo(Program::class);
     }
 }
