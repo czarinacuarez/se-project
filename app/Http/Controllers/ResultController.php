@@ -9,6 +9,9 @@ use App\Models\SportsMatch;
 use App\Models\Scores;
 use App\Models\Events;
 use App\Models\ContestMatch;
+use App\Models\SportsAwards;
+use App\Models\ContestAwards;
+
 use Carbon\Carbon;
 
 class ResultController extends Controller
@@ -41,6 +44,17 @@ class ResultController extends Controller
 
         $events = Events::orderBy('date', 'asc')->get();
 
-        return view('guest.result',  compact(['events','programs' , 'recentMatches',  'latestUpdated', 'recentContestMatches', 'latestUpdatedSchool','schools']));
+
+        $contestAwards = ContestAwards::with(['program', 'contest','school'])
+        ->orderBy('contest_id', 'asc')
+        ->orderByRaw("FIELD(championship, 'Champion', '1st Place', '2nd Place')")
+        ->get();
+
+        $sportsAwards = SportsAwards::with(['school', 'sports'])
+        ->orderBy('sports_id', 'asc')
+        ->orderByRaw("FIELD(championship, 'Champion', '1st Place', '2nd Place')")
+        ->get();
+    
+        return view('guest.result',  compact(['contestAwards','sportsAwards', 'events','programs' , 'recentMatches',  'latestUpdated', 'recentContestMatches', 'latestUpdatedSchool','schools']));
     }
 }

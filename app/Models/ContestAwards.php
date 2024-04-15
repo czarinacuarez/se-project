@@ -27,4 +27,10 @@ class ContestAwards extends Model
     {
         return $this->belongsTo(Program::class);
     }
+  
+
+    public function school()
+    {
+        return $this->belongsTo(School::class, 'program_id'); 
+    }
 }
