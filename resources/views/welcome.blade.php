@@ -45,25 +45,23 @@
                 View Gallery
             </a>
         </div>
-        <div class = "grid grid-cols-2 gap-2  md:gap-0 md:grid-cols-6 md:max-w-7xl px-4 mx-auto  md:px-10 py-4 my-5">
-            <div class = "bg-yellow-400 w-4/5 rounded-lg mx-auto p-2">
+        <div class = "grid grid-cols-2 gap-2  md:gap-0 md:grid-cols-5 md:max-w-7xl px-4 mx-auto  md:px-10 py-4 my-5">
+            <div class = "bg-blue-600 w-4/5 rounded-lg mx-auto p-2">
+                <img src = "images/SASlogo.png">
+            </div>
+            <div class = "bg-gray-600 w-4/5  rounded-lg mx-auto p-2">
                 <img src = "images/SBAlogo.png">
             </div>
-            <div class = "bg-yellow-400 w-4/5  rounded-lg mx-auto p-2">
-                <img src = "images/SBAlogo.png">
+            <div class = "bg-orange-400 w-4/5  rounded-lg mx-auto p-2">
+                <img src = "images/SETlogo.png">
             </div>
-            <div class = "bg-yellow-400 w-4/5  rounded-lg mx-auto p-2">
-                <img src = "images/SBAlogo.png">
+            <div class = "bg-red-600 w-4/5  rounded-lg mx-auto p-2">
+                <img src = "images/SOAlogo.png">
             </div>
-            <div class = "bg-yellow-400 w-4/5  rounded-lg mx-auto p-2">
-                <img src = "images/SBAlogo.png">
+            <div class = "bg-green-600 w-4/5  rounded-lg mx-auto p-2">
+                <img src = "images/SHTMlogo.png">
             </div>
-            <div class = "bg-yellow-400 w-4/5  rounded-lg mx-auto p-2">
-                <img src = "images/SBAlogo.png">
-            </div>
-            <div class = "bg-yellow-400 w-4/5  rounded-lg mx-auto p-2">
-                <img src = "images/SBAlogo.png">
-            </div>
+          
 
         </div>
     </div>

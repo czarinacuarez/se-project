@@ -22,6 +22,8 @@ export default {
             spacing: {
                 'large' : '40rem',
                 'about' : '35rem',
+                'superlg' : '40rem',
+
         
             },
             fontFamily: {

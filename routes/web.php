@@ -45,7 +45,13 @@ Route::get('/about', function () {
     return view('guest.about');
 })->name('about');
 
+Route::get('/se', function () {
+    return view('guest.se');
+})->name('se');
 
+Route::get('/team', function () {
+    return view('guest.team');
+})->name('team');
 
 Route::get('/sports', [SportsHomeController::class, 'index'])->name('sports');
 Route::get('/contest', [ContestHomeController::class, 'index'])->name('contest');

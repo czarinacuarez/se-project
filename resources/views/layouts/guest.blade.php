@@ -55,6 +55,23 @@
                     @endif  md:text-white 
                      ">Event Overview</a>
                 </li>
+
+                <li>
+                  <a href="{{  route('se')  }}" class="block py-2 px-3 text-gray-900 rounded  hover:text-black md:hover:text-yellow-300  hover:bg-yellow-400 md:hover:bg-transparent md:hover:text-white md:p-0
+                  @if (Route::is('se'))
+                  md:text-yellow-300
+                    @endif  md:text-white 
+                     ">About Us</a>
+                </li>
+
+                <li>
+                  <a href="{{  route('team')  }}" class="block py-2 px-3 text-gray-900 rounded  hover:text-black md:hover:text-yellow-300  hover:bg-yellow-400 md:hover:bg-transparent md:hover:text-white md:p-0
+                  @if (Route::is('team'))
+                  md:text-yellow-300
+                    @endif  md:text-white 
+                     ">Our Team</a>
+                </li>
+             
              
                 <li>
                     <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 md:hover:text-yellow-300 hover:bg-yellow-400 md:hover:bg-transparent hover:text-black  md:text-white md:border-0 md:hover:text-white md:p-0 md:w-auto     ">Sports & Contests <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
