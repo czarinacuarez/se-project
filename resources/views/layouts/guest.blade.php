@@ -24,7 +24,7 @@
                 <img src="images/u-week-navbar.svg" class="md:h-10 h-8 w-full" alt="">
             </a>
             <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-              @if (Route::has('login'))
+              {{-- @if (Route::has('login'))
               @auth
               <a href = "{{ url('/dashboard') }}" class=" bg-yellow-400 text-blue-800  hover:bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-extrabold rounded-lg text-sm px-4 py-2 text-center  ">Login</a>
               @else
@@ -37,7 +37,7 @@
                   <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
                   </svg>
-              </button>
+              </button> --}}
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
               <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-blue-800   ">
@@ -80,22 +80,24 @@
                     <!-- Dropdown menu -->
                     <div id="dropdownNavbar" class="z-10 hidden font-normal bg-blue-800 divide-y divide-gray-100 rounded-lg shadow w-44  ">
                         <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
-                          <li>
+                          {{-- <li>
                             <a href="{{  route('sports')  }}" class="block px-4 py-2 text-white hover:bg-yellow-400 hover:text-black ">Sports</a>
                           </li>
                           <li>
                             <a href="{{  route('contest')  }}" class="block px-4 py-2 text-white hover:bg-yellow-400 hover:text-black ">Contest</a>
-                          </li>
-                          <li>
+                          </li> --}}
+                          {{-- <li>
                             <a href="{{  route('gallery')  }}" class="block px-4 py-2  text-white hover:bg-yellow-400 hover:text-black ">Participants Gallery</a>
-                          </li>
+                          </li> --}}
                           <li>
                             <a href="{{  route('msnu')  }}" class="block px-4 py-2  text-white hover:bg-yellow-400 hover:text-black ">Mr. and Ms. NU</a>
+                          </li> 
+                          <li>
+                            <a href="{{  route('result')  }}" class="block px-4 py-2 text-sm text-white text-gray-700 hover:bg-yellow-400 md:hover:bg-yellow-400 hover:bg-yellow-400 hover:text-black  ">Results</a>
+
                           </li>
                         </ul>
-                        <div class="py-1">
-                          <a href="{{  route('result')  }}" class="block px-4 py-2 text-sm text-white text-gray-700 hover:bg-yellow-400 md:hover:bg-yellow-400 hover:bg-yellow-400 hover:text-black  ">Results</a>
-                        </div>
+                       
                 </li>
                
               </ul>

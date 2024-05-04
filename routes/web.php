@@ -37,9 +37,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
-Route::get('/result', [ResultController::class, 'index'])->name('result');
 
+
+Route::get('/result', function () {
+    return view('guest.result');
+})->name('result');
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
 
 Route::get('/about', function () {
     return view('guest.about');
@@ -53,10 +59,14 @@ Route::get('/team', function () {
     return view('guest.team');
 })->name('team');
 
+Route::get('/msnu', function () {
+    return view('guest.msnu');
+})->name('msnu');
+
+
 Route::get('/sports', [SportsHomeController::class, 'index'])->name('sports');
 Route::get('/contest', [ContestHomeController::class, 'index'])->name('contest');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-Route::get('/msnu', [PageantController::class, 'index'])->name('msnu');
 
 
 

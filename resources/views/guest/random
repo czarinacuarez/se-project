@@ -1,0 +1,14 @@
+<td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 md:whitespace-nowrap dark:text-white">
+                                        <img class="w-10 h-10 rounded-full bg-gray-600" src="images/SBAlogo.png" alt="">
+                                        <div class="ps-3">
+                                            <div class="text-xs text-left  text-blue-800 md:hidden font-semibold">School of Business and Accountancy
+
+                                            </div>
+                                            <div class="text-base text-blue-800 hidden md:block font-semibold">School of Business and Accountancy
+
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    
+

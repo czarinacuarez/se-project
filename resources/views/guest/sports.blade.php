@@ -8,9 +8,7 @@
         </h1>
         <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">This section consists of related information about this U-Week's Sports.
         </p>
-        <p class = " text-base lg:text-lg lg:text-center italic text-center lg:pe-10  py-2">Updated as of
-        </p>
-
+    
     </div>
 
     <div class = "bg-green-600 p-5  mx-auto">

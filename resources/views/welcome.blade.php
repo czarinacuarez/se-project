@@ -40,9 +40,9 @@
             class = "mx-auto py-4 flex flex-col md:flex-row items-center justify-between md:max-w-7xl mx-auto px-5 md:px-10">
             <h1 class = "text-2xl sm:text-4xl lg:text-5xl py-2 text-center md:text-left text-blue-800 font-extrabold ">
                 Participating Schools </h1>
-            <a href="{{  route('gallery')  }}"
+            <a href="{{  route('result')  }}"
                 class="bg-yellow-400 hover:bg-blue-800 text-blue-800 hover:text-white  text-center text-lg text-2xl font-bold py-2 px-6 lg:py-4 lg:px-8 rounded-full">
-                View Gallery
+                View University Week Results
             </a>
         </div>
         <div class = "grid grid-cols-2 gap-2  md:gap-0 md:grid-cols-5 md:max-w-7xl px-4 mx-auto  md:px-10 py-4 my-5">
@@ -67,11 +67,8 @@
     </div>
         <div class = "bg-cover p-5 md:p-10" style="background-image: url('{{ asset('images/greenbackground.png') }}');">
             <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
-                <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">SCHOOL'S SCOREBOARD</h1>
-                <p class = " text-sm lg:text-base lg:text-center text-center italic font-normal ">
-                    Updated as of {{ $latestUpdatedSchool->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
-
-                </p>
+                <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">OVERALL SCHOOL AWARDEE</h1>
+              
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -80,73 +77,140 @@
                                     SCHOOL
                                 </th>
                                 <th scope="col" class="  px-3 py-4">
-                                    SCORE
+                                    PLACEMENT
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($schools as $school)
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                    <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $school->school_logo )}}" alt="Jese image">
-                                        <div class="ps-3">
-                                            <div class="text-base text-blue-800 font-semibold">{{$school->school_name}}</div>
-                                        </div>
-                                    </td>
-                                    <td class=" px-3 py-4">
-                                        <div class="flex flex-col items-left">
-                                            <div class="">
-                                                <h1 class="text-xl font-bold">{{$school->points}}</h1>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
-                <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">PROGRAM'S SCOREBOARD</h1>
-                <p class="text-sm lg:text-base font-normal lg:text-center text-center italic">
-                    Updated as of {{ $latestUpdated->first()?->updated_at->format('F j, Y h:ia') ?? 'No update information available' }}
-                </p>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class=" px-3 py-4">
-                                    SCHOOL
-                                </th>
-                                <th scope="col" class="  px-3 py-4">
-                                    SCORE
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($programs as $program)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                    <img class="w-10 h-10 rounded-full" src="{{ asset('storage/images/'. $program->school->school_logo )}}" alt="Jese image">
+                                    <img class="w-10 h-10 rounded-full bg-gray-600" src="images/SBAlogo.png" alt="Jese image">
                                     <div class="ps-3">
-                                        <div class="text-base text-blue-800 font-semibold">{{$program->program_name}}</div>
+                                        <div class="text-xs text-left md:hidden text-blue-800 font-semibold">School of Business and Accountancy
+                                        </div>
+                                        <div class="text-base md:block hidden text-blue-800 font-semibold">School of Business and Accountancy
+                                        </div>
+                                    </div>
+                                </td>
+                              
+                                <td class=" px-3 py-4">
+                                    <div class="flex flex-col items-left">
+                                        <div class="">
+                                            <h1 class="text-xl font-bold">Champion</h1>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full bg-orange-400" src="images/SETlogo.png" alt="Jese image">
+                                    <div class="ps-3">
+                                        <div class="text-xs text-left md:hidden text-blue-800 font-semibold">School of Engineering and Technology
+                                        </div>
+                                        <div class="text-base md:block hidden text-blue-800 font-semibold">School of Engineering and Technology
+                                        </div>
                                     </div>
                                 </td>
                                 <td class=" px-3 py-4">
                                     <div class="flex flex-col items-left">
                                         <div class="">
-                                            <h1 class="text-xl font-bold">{{$program->points}}</h1>
+                                            <h1 class="text-base md:text-xl font-bold">1st Runner Up</h1>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full bg-yellow-400" src="images/SBAlogo.png" alt="Jese image">
+                                    <div class="ps-3">
+                                        <div class="text-xs text-left md:hidden text-blue-800 font-semibold">Senior High School
+                                        </div>
+                                        <div class="text-base md:block hidden text-blue-800 font-semibold">Senior High School
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class=" px-3 py-4">
+                                    <div class="flex flex-col items-left">
+                                        <div class="">
+                                            <h1 class="text-base md:text-xl font-bold">2nd Runner Up</h1>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
-                        @endforeach
+                    </table>
+                </div>
+            </div>
+            <div  class="max-w-4xl mx-auto shadow-lg p-5 my-5 bg-white rounded-lg">
+                <h1 class="text-2xl sm:text-4xl py-2 text-center text-blue-800 font-extrabold">OVERALL PROGRAM AWARDEE</h1>
+             
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class=" px-3 py-4">
+                                    PROGRAM
+                                </th>
+                                <th scope="col" class="  px-3 py-4">
+                                    PLACEMENT
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full bg-orange-400" src="images/SETlogo.png" alt="Jese image">
+                                    <div class="ps-3">
+                                        <div class="text-xs text-left md:hidden text-blue-800 font-semibold">Civil Engineering</div>
+                                        <div class="text-base md:block hidden text-blue-800 font-semibold">Civil Engineering</div>
+                                    </div>
+                                </td>
+                                <td class=" px-3 py-4">
+                                    <div class="flex flex-col items-left">
+                                        <div class="">
+                                            <h1 class="text-xl font-bold">Champion</h1>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full bg-gray-600" src="images/SBAlogo.png" alt="Jese image">
+                                    <div class="ps-3">
+                                        <div class="text-xs text-left md:hidden text-blue-800 font-semibold">Marketing Management</div>
+                                        <div class="text-base md:block hidden text-blue-800 font-semibold">Marketing Management</div>
+                                    </div>
+                                </td>
+                                <td class=" px-3 py-4">
+                                    <div class="flex flex-col items-left">
+                                        <div class="">
+                                            <h1 class="text-base md:text-xl font-bold">1st Runner Up</h1>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td scope="row" class="flex items-center justify-start px-3 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img class="w-10 h-10 rounded-full bg-gray-600" src="images/SBAlogo.png" alt="Jese image">
+                                    <div class="ps-3">
+                                        <div class="text-xs text-left md:hidden text-blue-800 font-semibold">Accountancy</div>
+                                        <div class="text-base md:block hidden text-blue-800 font-semibold">Accountancy</div>
+                                    </div>
+                                </td>
+                                <td class=" px-3 py-4">
+                                    <div class="flex flex-col items-left">
+                                        <div class="">
+                                            <h1 class="text-base md:text-xl font-bold">2nd Runner Up</h1>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class = "bg-blue-800 p-5 md:p-8 py-7">
+        <div class = "bg-green-600 p-5 md:p-8 py-7">
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-white font-extrabold ">UNIVERSITY WEEK SPORTS AND
                 CONTEST </h1>
             <div class = " max-w-4xl mx-auto py-5 md:py-8">
@@ -232,7 +296,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        {{-- </div>
         <div class = "p-5 max-w-7xl mx-auto">
             <h1 class = "text-3xl  sm:text-4xl  py-2 text-center  text-blue-800 font-extrabold ">UPCOMING SPORT MATCHES
             </h1>
@@ -470,5 +534,5 @@
             </div>
             @endforeach
 
-        </div>
+        </div> --}}
 </x-guest-layout>
